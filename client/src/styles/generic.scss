@@ -1,0 +1,54 @@
+@import "./variables.scss";
+
+.black_btn{
+    background-color: $primary-text;
+    color: $white;
+    padding: 12px 32px;
+    font-weight: 500;
+    transition: $transition;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+.black_btn:hover{
+    background-color: transparent;
+    border-color: $primary-text;
+    color: $primary-text;
+}
+.white_btn{
+    background-color: $white;
+    color: $primary-text;
+    padding: 12px 32px;
+    font-weight: 500;
+    transition: $transition;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+.black_btn:hover{
+    background-color: transparent;
+    border-color: $primary-text;
+}
+.green_btn{
+    background-color: $green-primary;
+    color: $white;
+    padding: 12px 32px;
+    font-weight: 500;
+    transition: $transition;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+.black_btn:hover{
+    background-color: transparent;
+    border-color: $green-primary;
+    color: $green-primary;
+}
+
+.home_heading{font-size: 4rem; font-weight: 600; color: $primary-text;}
+.heading_one{font-size: 3.5rem; font-weight: 600; color: $primary-text;}
+.heading_two{font-size: 3rem; font-weight: 600; color: $primary-text;}
+.heading_three{font-size: 1.75rem; font-weight: 600; color: $primary-text;}
+.heading_four{font-size: 1.2rem; font-weight: 600; color: $primary-text;}
+.heading_five{font-size: 0.875rem; font-weight: 600; color: $primary-text;}
+.heading_six{font-size: 0.75rem; font-weight: 600; color: $primary-text;}
+
+.paragraph{font-size: .9rem; color: $secondary-text;}
+.paragraph_small{font-size: .8rem; color: $secondary-text;}

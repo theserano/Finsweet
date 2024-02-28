@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.nav_link{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0rem;
+    background-color: $white;
+}
+
+.nav_menu{
+
+    &_icon{
+        display: none;
+    }
+    &_box{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        &_link{
+            border-bottom: 2px solid transparent;
+            transition: $transition;
+        }
+        &_link:hover{
+            border-bottom-color: $green-primary;
+        }
+    }
+}
+
+.show_nav_menu{
+    display: block;
+}
