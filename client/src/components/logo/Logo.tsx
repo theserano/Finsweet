@@ -1,9 +1,16 @@
 import "./logo.scss";
 
-const logo = () => {
+interface logoProp {
+  color: string
+}
+
+
+const logo = ({color}: logoProp) => {
   return (
     <div className="logo">
-        <span>{`{Finsweet`}</span>
+        <span style={{
+          color: color
+        }}>{`{Finsweet`}</span>
     </div>
   )
 }

@@ -52,3 +52,9 @@
 
 .paragraph{font-size: .9rem; color: $secondary-text;}
 .paragraph_small{font-size: .8rem; color: $secondary-text;}
+
+@media screen and (max-width: 600px){
+    .heading_two{
+        font-size: 2rem;
+    }
+}

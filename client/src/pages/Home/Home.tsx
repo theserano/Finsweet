@@ -4,7 +4,9 @@ import "../../styles/generic.scss";
 
 const Home = () => {
   return (
-    <div></div>
+    <div className="home">
+        
+    </div>
   )
 }
 

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const NavLink = lazy(() => import('./components/Navlink/Navlink'));
+const Footer = lazy(() => import('./components/footer/Footer'));
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
         </Routes>
+        <Footer />
       </Router>
     </Suspense>
     </>

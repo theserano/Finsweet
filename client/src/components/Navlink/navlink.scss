@@ -4,15 +4,26 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0rem;
+    align-items: flex-start;
+    padding: 1rem;
     background-color: $white;
+    position: sticky;
+    top: 0;
 }
 
 .nav_menu{
 
     &_icon{
         display: none;
+    }
+    .show_nav_menu{
+        display: block;
+        font-size: 2rem;
+        color: $primary-text;
+        transition: $transition;
+    }
+    .show_nav_menu:hover{
+        color: $green-primary;
     }
     &_box{
         display: flex;
@@ -31,6 +42,22 @@
     }
 }
 
-.show_nav_menu{
-    display: block;
+.nav_menu_show{
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 30;
+    
+    .show_nav_menu_box{
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-end;
+        opacity: 0;
+        transition: $transition;
+    }
+    .openMenu{
+        opacity: 1;
+    }
 }
