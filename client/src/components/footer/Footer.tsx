@@ -2,10 +2,34 @@ import "../../styles/generic.scss";
 import "./footer.scss"
 import Logo from "../logo/Logo";
 import {Link} from "react-router-dom";
+import { useState } from "react";
+import { setEmail, subscribeWithEmail } from "../../store/subscribe/subscribeSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectSubscribe } from "../../store/selector";
 
 
 
 const Footer = () => {
+
+    const [emailValue, setEmailValue] = useState("");
+    const [emptyError, setEmptyError] = useState(false);
+    const dispatch = useAppDispatch();
+    const subscribe = useAppSelector(selectSubscribe)
+
+    const handleSubscribe = async (event: React.FormEvent<HTMLFormElement>) =>{
+        event.preventDefault();
+
+        if(emailValue == ""){
+            setEmptyError(!emptyError);
+        }
+        try {
+            dispatch(setEmail(emailValue));
+            subscribeWithEmail();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
   return (
     <div className="footer p-12 py-20 flex items-start justify-evenly flex-wrap gap-8">
 
@@ -41,10 +65,26 @@ const Footer = () => {
 
         <div className="footer_form">
             <h2 className="heading_two">Subscribe to get latest updates</h2>
-            <form>
-                <input type="email" placeholder="Your email" />
-                <input type="submit" value="Subscribe" />
+            <form onSubmit={handleSubscribe}>
+                <input 
+                type="email" 
+                placeholder="Your email" 
+                onChange={(e) => {
+                    setEmailValue(e.target.value)
+                    setEmptyError(false);
+                }} />
+                <input 
+                type="submit" 
+                value="Subscribe"
+                 />
             </form>
+                 <p className={`${emptyError ? 'error' : ''}`} style={{
+                    opacity: `${emptyError ? 
+                    '1' : '0'}`,
+                    marginTop: "-16px",
+                    marginLeft: "5px",
+                    transition: "all ease-in-out 300ms"
+                 }}>No email provided</p>
         </div>
 
     </div>
