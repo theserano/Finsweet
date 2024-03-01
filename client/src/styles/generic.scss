@@ -52,6 +52,18 @@
 
 .paragraph{font-size: .9rem; color: $secondary-text;}
 .paragraph_small{font-size: .8rem; color: $secondary-text;}
+.error{
+    color: #E6A4B4;
+    font-size: .8rem;
+}
+.warn{
+    color: #FFEAA7;
+    font-size: .8rem;
+}
+
+
+
+/* media queries */
 
 @media screen and (max-width: 600px){
     .heading_two{
