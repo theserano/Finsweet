@@ -1,6 +1,8 @@
 import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { dataType } from "../../components/footer/Footer";
 
+const API_BASE_URL = 'http://localhost:5000'
 
 export interface subscribeType {
     email: string,
@@ -16,8 +18,8 @@ const initialState: subscribeType =  {
 }
 
 export const subscribeWithEmail = createAsyncThunk('subscribe/email',
-async (data) => {
-    const response = await axios.post('/api/subscribe', data);
+async (data: dataType) => {
+    const response = await axios.post(`${API_BASE_URL}/api/subscribe/confirm`, data);
     return response.data;
 }
 )

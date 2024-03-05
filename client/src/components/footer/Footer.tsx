@@ -4,9 +4,14 @@ import Logo from "../logo/Logo";
 import {Link} from "react-router-dom";
 import { useState } from "react";
 import { setEmail, subscribeWithEmail } from "../../store/subscribe/subscribeSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { selectSubscribe } from "../../store/selector";
+import { useAppDispatch,
+    //  useAppSelector
+     } from "../../store/hooks";
+// import { selectSubscribe } from "../../store/selector";
 
+ export interface dataType {
+    email: string
+}
 
 
 const Footer = () => {
@@ -14,7 +19,7 @@ const Footer = () => {
     const [emailValue, setEmailValue] = useState("");
     const [emptyError, setEmptyError] = useState(false);
     const dispatch = useAppDispatch();
-    const subscribe = useAppSelector(selectSubscribe)
+    // const subscribe = useAppSelector(selectSubscribe)
 
     const handleSubscribe = async (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
@@ -23,8 +28,10 @@ const Footer = () => {
             setEmptyError(!emptyError);
         }
         try {
-            dispatch(setEmail(emailValue));
-            subscribeWithEmail();
+            const data: dataType = {
+                email: emailValue
+            }
+            await dispatch(subscribeWithEmail(data));
         } catch (error) {
             console.log(error);
         }
@@ -72,6 +79,7 @@ const Footer = () => {
                 onChange={(e) => {
                     setEmailValue(e.target.value)
                     setEmptyError(false);
+                    dispatch(setEmail(emailValue));
                 }} />
                 <input 
                 type="submit" 
