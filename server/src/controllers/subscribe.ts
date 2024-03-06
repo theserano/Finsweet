@@ -42,7 +42,6 @@ export const sendEmail = async (email: string) => {
             to: email,
             subject: "New subscriber alert!!😁",
             text: "Thank you for subscribing to finsweet platform, we are in this together",
-            html: "<>Thank you for subscribing to finsweet platform, we are in this together</>"
         }
 
         const info = await transporter.sendMail(mailOptions);
