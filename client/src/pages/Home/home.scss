@@ -1,10 +1,13 @@
 @import "../../styles/variables.scss";
 
-.home_header{
+.home_header_container{
     background-image: url("https://res.cloudinary.com/dfltu5jw4/image/upload/v1709710637/finsweet/home/BG_Image_lzaars.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.home_header{
+    
     padding: 10rem 5rem 5rem;
     display: flex;
     flex-direction: column;
@@ -103,6 +106,121 @@
     }
 }
 
+.home_what_section{
+    background-color: $green-tertiary;
+    padding: 5rem 1rem;
+    margin-bottom: 5rem;
+}
+
+.home_what{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+
+    &_left{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        &_bottom{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-left: 5rem;
+
+            &_cards{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 1rem;
+                padding: 1rem;
+                border: 1px solid $off-white;
+                border-style: none none none solid;
+
+                div{
+                    display: flex;
+                    gap: .7rem;
+                    width: 300px;
+                    
+                    span{
+                        img{
+                            width: 70px;
+                        }
+                        h4{
+                            margin-bottom: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &_right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 400px;
+        }
+    }
+}
+
+.projects{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 5rem;
+
+    h1{
+        padding-left: 5rem;
+        width: 40rem;
+        margin-bottom: 2rem;
+    }
+
+    &_cards{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: space-evenly;
+    }
+}
+
+.home_spend_container{
+    background-color: $black;
+    padding: 5rem 0rem;
+    margin-bottom: 5rem;
+}
+.home_spend{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+
+    &_left{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+
+        h1{
+            color: $white;
+        }
+
+        &_donations{
+            display: flex;
+            justify-content: space-evenly;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    }
+
+    &_right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
 
 
 /* media queries */
@@ -137,6 +255,18 @@
             padding: 2rem;
         }
     }
+    .home_what{
+        grid-template-columns: 100%;
+    }
+    .projects{
+        h1{
+            width: fit-content;
+        }
+    }
+    .home_spend{
+        grid-template-columns: 100%;
+        padding: 2rem;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -170,6 +300,37 @@
                 &_bottom{
                     padding-left: 3rem;
                 }
+            }
+        }
+    }
+    .home_what{
+        &_left{
+            &_bottom{
+                padding-left: 3rem;
+            }
+        }
+        &_right{
+            img{
+                width: 200px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .home_know{
+        &_top{
+            &_left{
+                &_bottom{
+                    padding-left: 2rem;
+                }
+            }
+        }
+    }
+    .home_what{
+        &_left{
+            &_bottom{
+                padding-left: 2rem;
             }
         }
     }
