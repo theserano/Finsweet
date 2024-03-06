@@ -8,6 +8,7 @@
     transition: $transition;
     border: 2px solid transparent;
     border-radius: 10px;
+    width: fit-content;
 }
 .black_btn:hover{
     background-color: transparent;
@@ -22,8 +23,9 @@
     transition: $transition;
     border: 2px solid transparent;
     border-radius: 10px;
+    width: fit-content;
 }
-.black_btn:hover{
+.white_btn:hover{
     background-color: transparent;
     border-color: $primary-text;
 }
@@ -35,20 +37,21 @@
     transition: $transition;
     border: 2px solid transparent;
     border-radius: 10px;
+    width: fit-content;
 }
-.black_btn:hover{
+.green_btn:hover{
     background-color: transparent;
     border-color: $green-primary;
     color: $green-primary;
 }
 
-.home_heading{font-size: 4rem; font-weight: 600; color: $primary-text;}
-.heading_one{font-size: 3.5rem; font-weight: 600; color: $primary-text;}
-.heading_two{font-size: 3rem; font-weight: 600; color: $primary-text;}
-.heading_three{font-size: 1.75rem; font-weight: 600; color: $primary-text;}
-.heading_four{font-size: 1.2rem; font-weight: 600; color: $primary-text;}
-.heading_five{font-size: 0.875rem; font-weight: 600; color: $primary-text;}
-.heading_six{font-size: 0.75rem; font-weight: 600; color: $primary-text;}
+.home_heading{font-size: 4rem; font-weight: 600; color: $primary-text; line-height: 1.1;}
+.heading_one{font-size: 3.5rem; font-weight: 600; color: $primary-text; line-height: 1;}
+.heading_two{font-size: 2.5rem; font-weight: 600; color: $primary-text; line-height: 1;}
+.heading_three{font-size: 1.75rem; font-weight: 600; color: $primary-text; line-height: 1;}
+.heading_four{font-size: 1.2rem; font-weight: 600; color: $primary-text; line-height: 1;}
+.heading_five{font-size: 0.875rem; font-weight: 600; color: $primary-text; line-height: 1;}
+.heading_six{font-size: 0.75rem; font-weight: 600; color: $primary-text; line-height: 1;}
 
 .paragraph{font-size: .9rem; color: $secondary-text;}
 .paragraph_small{font-size: .8rem; color: $secondary-text;}
@@ -60,13 +63,45 @@
     color: #FFEAA7;
     font-size: .8rem;
 }
+.success{
+    color: $green-primary;
+    font-size: .8rem;
+}
+
+.line_flex{
+    flex: 1;
+    border: 1px solid $secondary-text;
+    border-style: solid none none;
+}
 
 
 
 /* media queries */
+@media screen and (max-width: 1000px) {
+    .home_heading{
+        font-size: 3rem;
+    }
+    .heading_two{
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .home_heading{
+        font-size: 2.5rem;
+    }
+}
 
 @media screen and (max-width: 600px){
     .heading_two{
         font-size: 2rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    .home_heading{
+        font-size: 2rem;
+    }
+    .heading_two{
+        font-size: 1.5rem;
     }
 }

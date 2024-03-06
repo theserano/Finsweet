@@ -8,13 +8,15 @@ export interface subscribeType {
     email: string,
     message?: string,
     loading?: boolean,
-    error?: boolean
+    error?: boolean,
+    done?: boolean
 }
 
 const initialState: subscribeType =  {
     email: "",
     loading: false,
-    error: false
+    error: false,
+    done: false,
 }
 
 export const subscribeWithEmail = createAsyncThunk('subscribe/email',
@@ -38,13 +40,16 @@ export const subscribeSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(subscribeWithEmail.pending, (state) => {
             state.loading = true;
+            state.done = false;
         });
         builder.addCase(subscribeWithEmail.fulfilled, (state, action: PayloadAction<string>) => {
             state.message=action.payload
             state.loading = false
+            state.done = true
         })
         builder.addCase(subscribeWithEmail.rejected, (state) => {
             state.error = true
+            state.done = false
         })
     }
 })

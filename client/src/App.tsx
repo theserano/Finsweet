@@ -7,8 +7,8 @@ const NavLink = lazy(() => import('./components/Navlink/Navlink'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 
 
-
 function App() {
+
 
   return (
     <>

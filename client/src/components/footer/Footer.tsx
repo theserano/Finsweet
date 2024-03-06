@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 import { useState } from "react";
 import { setEmail, subscribeWithEmail } from "../../store/subscribe/subscribeSlice";
 import { useAppDispatch,
-    //  useAppSelector
+     useAppSelector
      } from "../../store/hooks";
-// import { selectSubscribe } from "../../store/selector";
+import { selectSubscribe } from "../../store/selector";
 
  export interface dataType {
     email: string
@@ -18,8 +18,9 @@ const Footer = () => {
 
     const [emailValue, setEmailValue] = useState("");
     const [emptyError, setEmptyError] = useState(false);
+    const [subscribed, setSubscribed] = useState(false);
     const dispatch = useAppDispatch();
-    // const subscribe = useAppSelector(selectSubscribe)
+    const subscribe = useAppSelector(selectSubscribe)
 
     const handleSubscribe = async (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
@@ -32,6 +33,13 @@ const Footer = () => {
                 email: emailValue
             }
             await dispatch(subscribeWithEmail(data));
+
+            if(subscribe.done === true){
+                setSubscribed(true);
+                setTimeout(() => {
+                    setSubscribed(false);
+                }, 2000)
+            }
         } catch (error) {
             console.log(error);
         }
@@ -93,6 +101,13 @@ const Footer = () => {
                     marginLeft: "5px",
                     transition: "all ease-in-out 300ms"
                  }}>No email provided</p>
+                 <p className={`${subscribed ? 'success' : ''}`} style={{
+                    opacity: `${subscribed ? 
+                    '1' : '0'}`,
+                    marginTop: "-36px",
+                    marginLeft: "5px",
+                    transition: "all ease-in-out 300ms"
+                 }}>You are now a subscriber!!</p>
         </div>
 
     </div>
