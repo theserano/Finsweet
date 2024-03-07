@@ -1,0 +1,173 @@
+@import "../../styles/variables.scss";
+
+.about_header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem;
+
+    &_left{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h2{
+            padding-left: 5rem;
+        }
+    }
+    &_right{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+.about_mission{
+    background-color: $green-tertiary;
+    padding: 20rem 0rem 5rem;
+    margin-top: 20rem;
+    position: relative;
+
+    &_video{
+        position: absolute;
+        top: -30%;
+        left: 5%;
+        width: 90%;
+        height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+
+        button{
+            width: 100%;
+            height: 100%;
+            video{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &_details{
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        &_top{
+            display: grid;
+            grid-template-columns: repeat(2, 500px);
+            justify-content: space-evenly;
+            gap: 3rem;
+
+            &_each{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                h5{
+                    margin-bottom: 1rem;
+                }
+                h4{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+/* added style for supporters from home */
+.home_know_bottom{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &_our{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        &_supporters{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 3rem;
+
+            img{
+                width: 150px;
+            }
+        }
+    }
+
+
+
+/* media queries */
+@media screen and (max-width: 1100px) {
+    .about_mission{
+        &_details{
+            &_top{
+                grid-template-columns: repeat(2, 300px);
+            }
+        }
+    }
+}
+@media screen and (max-width: 1000px) {
+    .about_mission{
+        &_video{
+            height: 300px;
+            top: -15%;
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .about_mission{
+        margin-top: 10rem;
+        padding: 10rem 0rem 5rem;
+        &_video{
+            height: 200px;
+            top: -10%;
+        }
+    }
+}
+@media screen and (max-width: 700px) {
+    .about_header{
+        grid-template-columns: 100%;
+        padding: 2rem;
+        gap: 3rem;
+
+        &_right{
+            gap: 1rem;
+        }
+    }
+    .about_mission{
+        &_details{
+            padding: 1rem;
+            &_top{
+                grid-template-columns: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about_header{
+        &_left{
+            h2{
+                padding-left: 3rem;
+            }
+        }
+        &_right{
+            h4{
+                font-size: 1.2rem;
+            }
+        }
+    }
+    .about_mission{
+        &_video{
+            height: 150px;
+            top: -5%;
+        }
+    }
+}

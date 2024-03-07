@@ -14,7 +14,7 @@ export const navData: navItem[]  = [
     {
         id: "2",
         text: "About us",
-        link: "/",
+        link: "/about",
     },
     {
         id: "3",
