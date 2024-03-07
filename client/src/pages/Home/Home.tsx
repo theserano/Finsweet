@@ -5,11 +5,12 @@ import icon from "../../assets/home/Icon.svg";
 import icon1 from "../../assets/home/Icon (1).svg";
 import icon2 from "../../assets/home/Icon (2).svg";
 import icon3 from "../../assets/home/Icon (3).svg";
-import chart from "../../assets/home/Chart.png";
+import { data } from "./data";
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
 const Card = lazy(() => import("../../components/card/Card"));
 const Chart = lazy(() => import("../../components/chart/Chart"));
+const TitleLine = lazy(() => import("../../components/titleLine/TitleLine"));
 
 interface VideoProps extends HTMLVideoElement {
   mozRequestFullScreen?(): void;
@@ -246,30 +247,61 @@ const Home = () => {
             </p>
             <div className="home_spend_left_donations">
               <p className="paragraph text-white">
-                <span></span>40% planting trees
+                <span
+                    style={{
+                        backgroundColor: "#B0D9B1"
+                    }}
+                ></span>40% planting trees
               </p>
               <p className="paragraph text-white">
-                <span></span>35% cleanliness program
+                <span
+                    style={{
+                        backgroundColor: "#AC94F1"
+                    }}
+                ></span>35% cleanliness program
               </p>
               <p className="paragraph text-white">
-                <span></span>10% helping people
+                <span
+                    style={{
+                        backgroundColor: "#FFF0CA"
+                    }}
+                ></span>10% helping people
               </p>
               <p className="paragraph text-white">
-                <span></span>10% animal safety
+                <span
+                    style={{
+                        backgroundColor: "#F9CF64"
+                    }}
+                ></span>10% animal safety
               </p>
               <p className="paragraph text-white">
-                <span></span>5% feeding the poor
+                <span
+                    style={{
+                        backgroundColor: "#F38FBF"
+                    }}
+                ></span>5% feeding the poor
               </p>
             </div>
           </article>
           {/* right side */}
           <article className="home_spend_right">
-            <img src={chart} alt="" />
+            <Chart data={data} />
           </article>
         </section>
       </section>
 
-        <Chart />
+      <div className="home_contribute container mx-auto">
+        <div className="tint"></div>
+        <div className="home_contribute_content">
+            <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
+            <div>
+                <button className="green_btn">Join as a volunteer</button>
+                <button className="white_btn">Donate</button>
+            </div>
+        </div>
+      </div>
+
+      <TitleLine text="Read Our News" />
 
       
     </div>

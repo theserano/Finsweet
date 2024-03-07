@@ -1,65 +1,48 @@
-import { useEffect, useRef } from "react";
-import "./chart.scss";
-import Chart from 'chart.js/auto';
+import {
+    Chart as ChartJS,
+    ArcElement,
+    Tooltip,
+    Legend
+} from 'chart.js';
+import {Doughnut} from 'react-chartjs-2'
 
 
-
-interface ChartData {
+export interface ChartData {
     datasets: [{
-      data: number[],
-      label: string,
-      backgroundColor: string[],
-      hoverOffset: number
+        data: number[],
+        label: string,
+        backgroundColor: string[],
+        hoverOffset: number
     }];
-    labels: string[];
-  }
-  const data: ChartData = {
-      datasets: [{
-          data: [40, 35, 10, 10, 5],
-          label: 'Spending',
-          backgroundColor: [
-              '#B0D9B1',
-              '#AC94F1',
-              '#FFF0CA',
-              '#F9CF64',
-              '#F38FBF'
-          ],
-          hoverOffset: 4
-      }],
-      labels: [
-          '40% planting trees',
-          '35% cleanliness program',
-          '10% helping people',
-          '10% animal safety',
-          '5% feeding the poor'
-      ]
-  };
-  interface CompData {
-    data: ChartData
-  }
-
-const Chart = ({data} :CompData) => {
-
-    const chartRef = useRef<HTMLCanvasElement | null>(null);
-
-    useEffect(() => {
-        if(chartRef.current){
-            const ctx = chartRef.current.getContext('2d');
-            if(ctx){
-                new Chart(ctx, {
-                    type: 'doughnut',
-                    data: data
-                } )
-            }
-        }
-    }, [data])
-    
-
-  return (
-    <div>
-        <canvas ref={chartRef} />
-    </div>
-  )
 }
 
-export default Chart
+interface CompData {
+    data: ChartData,
+}
+
+ChartJS.register(
+    ArcElement,
+    Tooltip,
+    Legend
+)
+
+
+
+const Chart = ({ data }: CompData) => {
+
+    return (
+        <div 
+            className="doughnut"
+            style={{
+                width: "350px",
+                height: "350px"
+            }}
+        >
+            <Doughnut
+                data={data}
+            ></Doughnut>
+        </div>
+    );
+};
+
+export default Chart;
