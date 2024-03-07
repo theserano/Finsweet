@@ -6,7 +6,7 @@
     align-items: center;
     gap: 1rem;
     background-color: $green-tertiary;
-    width: 500px;
+    width: 400px;
     padding: 2rem;
     border-radius: 10px;
 
@@ -42,5 +42,11 @@
         h4{
             font-weight: 600;
         }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .event{
+        width: 300px;
     }
 }
