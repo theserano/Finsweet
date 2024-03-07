@@ -11,6 +11,8 @@ const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
 const Card = lazy(() => import("../../components/card/Card"));
 const Chart = lazy(() => import("../../components/chart/Chart"));
 const TitleLine = lazy(() => import("../../components/titleLine/TitleLine"));
+const NewsCard = lazy(() => import("../../components/card/NewsCard"));
+const Event = lazy(() => import("../../components/event/Event"));
 
 interface VideoProps extends HTMLVideoElement {
   mozRequestFullScreen?(): void;
@@ -302,6 +304,43 @@ const Home = () => {
       </div>
 
       <TitleLine text="Read Our News" />
+
+      <section className="home_card_news">
+        <NewsCard 
+            image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818409/finsweet/home/Thumbnail_hcjdoz.png"
+            header="Don't destroy greenery and don't spoil scenery"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim"
+        />
+        <NewsCard 
+            image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818401/finsweet/home/Thumbnail_1_bpxpej.png"
+            header=" Is climate change happening faster?"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim"
+        />
+        <NewsCard 
+            image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818401/finsweet/home/Thumbnail_2_goa6bn.png"
+            header="Top 10 facts about wind farms you didn't know"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim"
+        />
+        <NewsCard 
+            image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818408/finsweet/home/Thumbnail_3_odwg8e.png"
+            header="Our goal is to make water available for everyone"
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim"
+        />
+      </section>
+
+      <TitleLine text="Our Events" />
+      <div className="home_event flex flex-wrap justify-start gap-8 px-4 container mx-auto mb-20">
+        <Event 
+            day="23"
+            month="SEP"
+            text="Say no to plastic usage and save the planet"
+        />
+        <Event 
+            day="25"
+            month="SEP"
+            text="Weekly cleaning program"
+        />
+      </div>
 
       
     </div>

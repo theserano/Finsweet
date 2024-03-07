@@ -48,10 +48,10 @@
 .home_heading{font-size: 4rem; font-weight: 600; color: $primary-text; line-height: 1.1;}
 .heading_one{font-size: 3.5rem; font-weight: 600; color: $primary-text; line-height: 1;}
 .heading_two{font-size: 2.5rem; font-weight: 600; color: $primary-text; line-height: 1;}
-.heading_three{font-size: 1.75rem; font-weight: 600; color: $primary-text; line-height: 1;}
-.heading_four{font-size: 1.2rem; font-weight: 600; color: $primary-text; line-height: 1;}
-.heading_five{font-size: 0.875rem; font-weight: 600; color: $primary-text; line-height: 1;}
-.heading_six{font-size: 0.75rem; font-weight: 600; color: $primary-text; line-height: 1;}
+.heading_three{font-size: 1.75rem; font-weight: 500; color: $primary-text; line-height: 1;}
+.heading_four{font-size: 1.2rem; font-weight: 500; color: $primary-text; line-height: 1;}
+.heading_five{font-size: 0.875rem; font-weight: 400; color: $primary-text; line-height: 1;}
+.heading_six{font-size: 0.75rem; font-weight: 400; color: $primary-text; line-height: 1;}
 
 .paragraph{font-size: .9rem; color: $secondary-text;}
 .paragraph_small{font-size: .8rem; color: $secondary-text;}
@@ -153,12 +153,6 @@
     .heading_three{
         font-size: 1.6rem;
     }
-    .heading_four{
-        font-size: 1.3rem;
-    }
-    .heading_five{
-        font-size: 1.1rem;
-    }
 }
 @media screen and (max-width: 400px) {
     .home_heading{
@@ -172,8 +166,5 @@
     }
     .heading_four{
         font-size: 1.1rem;
-    }
-    .heading_five{
-        font-size: 1rem;
     }
 }
