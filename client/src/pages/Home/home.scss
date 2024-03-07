@@ -207,9 +207,20 @@
 
         &_donations{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: flex-start;
             gap: 1rem;
             flex-wrap: wrap;
+
+            p{
+                display: flex;
+                gap: .5rem;
+                align-items: center;
+                span{
+                    display: block;
+                    width: 20px;
+                    height: 10px;
+                }
+            }
         }
     }
 
@@ -220,7 +231,38 @@
     }
 }
 
+.home_contribute{
+    margin-bottom: 5rem;
+    background-image: url("https://res.cloudinary.com/dfltu5jw4/image/upload/v1709797629/finsweet/home/wind_mill_ykzzpd.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 
+    &_content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        z-index: 1;
+
+        h1{
+            color: $white;
+        }
+        div{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+    }
+}
 
 
 /* media queries */
@@ -267,6 +309,9 @@
         grid-template-columns: 100%;
         padding: 2rem;
     }
+    .home_contribute{
+        padding: 3rem;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -274,6 +319,9 @@
         &_top{
             width: 400px;
         }
+    }
+    .home_contribute{
+        border-radius: 0px;
     }
 }
 @media screen and (max-width: 600px){
@@ -312,6 +360,15 @@
         &_right{
             img{
                 width: 200px;
+            }
+        }
+    }
+    .home_contribute{
+        &_content{
+            div{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
