@@ -14,7 +14,7 @@ const TitleLine = lazy(() => import("../../components/titleLine/TitleLine"));
 const NewsCard = lazy(() => import("../../components/card/NewsCard"));
 const Event = lazy(() => import("../../components/event/Event"));
 
-interface VideoProps extends HTMLVideoElement {
+export interface VideoProps extends HTMLVideoElement {
   mozRequestFullScreen?(): void;
   webkitRequestFullscreen?(): void;
 }
