@@ -83,7 +83,36 @@
     background-color: rgba($black, 0.2);
     padding: 1rem;
 }
+.team_card{
+    width: 250px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: $transition;
+    border-radius: 10px;
+    cursor: default;
 
+    &_image{
+        width: 100%
+        img{
+            width: 100%;
+        }
+    }
+    &_details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .7rem;
+    }
+}
+
+.team_card:hover{
+    background-color: rgba($black, 0.2);
+}
 
 /* media queries */
 @media screen and (max-width: 500px) {
