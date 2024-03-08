@@ -1,0 +1,110 @@
+@import "../../styles/variables.scss";
+
+
+.media_header{
+    background-color: $green-tertiary;
+    padding: 5rem 0rem;
+    margin-bottom: 5rem;
+
+    &_container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+
+        &_left{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            &_details{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding-left: 5rem;
+            }
+        }
+
+        &_right{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: $white;
+            border-radius: 10px;
+
+            &_div{
+                display: grid;
+                grid-template-columns: 35% 65%;
+                gap: 1rem;
+                padding-right: 1rem;
+
+                &_image{
+                    width: 100%;
+                    img{
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+                &_details{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 1rem;
+
+                    h4{
+                        font-weight: 600;
+                    }
+                }
+            }
+            
+        }
+
+    }
+}
+
+
+/* media queries */
+@media screen and (max-width: 1000px){
+    .media_header{
+        &_container{
+            &_right{
+                &_div{
+                    &_details{
+                        h4{
+                            font-weight: 500;
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 800px){
+    .media_header{
+        &_container{
+            grid-template-columns: 100%;
+            padding: 3rem;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .media_header{
+        padding: 2rem 0rem;
+        &_container{
+            &_left{
+                &_details{
+                    padding-left: 3rem;
+                }
+            }
+            &_right{
+                width: 300px;
+                gap: 3rem;
+                &_div{
+                    grid-template-columns: 100%;
+                    padding-right: 0rem;
+                }
+            }
+        }
+    }
+}

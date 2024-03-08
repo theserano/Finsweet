@@ -1,0 +1,84 @@
+@import "../../styles/variables.scss";
+
+
+.what_header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding: 5rem 0rem;
+    margin-bottom: 5rem;
+
+    &_left{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+    &_right{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+.what_env{
+    background-color: $green-tertiary;
+    width: 100%;
+    margin-bottom: 5rem;
+    padding: 5rem 0rem;
+
+    &_container{
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        &_bottom{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+
+            div{
+                display: flex;
+                gap: 1rem;
+                span{
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+/* media queries */
+@media screen and (max-width: 800px) {
+    .what_header{
+        grid-template-columns: 100%;
+        padding: 5rem 1rem;
+    }
+    .what_env{
+        padding: 5rem 1rem;
+        &_container{
+            &_bottom{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .what_env{
+        &_container{
+            &_bottom{
+                display: grid;
+                grid-template-columns: 100%;
+            }
+        }
+    }
+}
