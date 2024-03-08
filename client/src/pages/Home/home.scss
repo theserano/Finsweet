@@ -175,26 +175,6 @@
     }
 }
 
-.projects{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 5rem;
-
-    h1{
-        padding-left: 5rem;
-        width: 40rem;
-        margin-bottom: 2rem;
-    }
-
-    &_cards{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3rem;
-        justify-content: space-evenly;
-    }
-}
-
 .home_spend_container{
     background-color: $black;
     padding: 5rem 0rem;
