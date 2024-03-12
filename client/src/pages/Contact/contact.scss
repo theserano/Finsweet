@@ -58,6 +58,10 @@
             input:focus{
                 outline: none;
             }
+            .contact_error{
+                color: #E6A4B4;
+                font-size: .8rem;
+            }
         }
     }
     &_bottom{
@@ -72,6 +76,10 @@
         }
         textarea:focus{
             outline: none;
+        }
+        .contact_error{
+            color: #E6A4B4;
+            font-size: .8rem;
         }
 
     }
