@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import subscribeRoutes from "./routes/subscribe";
+import contactRoutes from "./routes/contact";
 import mongoose from "mongoose";
 
 
@@ -12,7 +13,8 @@ const app = express();
 app.use(express.json());
 app.use(cors({origin: true}));
 app.use(express.urlencoded({ extended: true }))
-app.use("/api/subscribe", subscribeRoutes)
+app.use("/api/subscribe", subscribeRoutes);
+app.use("/api/contact", contactRoutes)
 
 const connectionString = process.env.MONGODB_URL as string
 mongoose.connect(connectionString);

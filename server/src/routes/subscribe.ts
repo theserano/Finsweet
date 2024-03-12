@@ -9,17 +9,17 @@ router.post("/confirm", async (req: Request, res: Response) => {
         const {email} = req.body;
         const prevEmail = await Subscribe.findOne({email});
 
-        // if(!email){
-        //     return res.status(404).json({message: "Email is not found"})
-        // }
+        if(!email){
+            return res.status(404).json({message: "Email is not found"})
+        }
         if(prevEmail){
             return res.status(500).json({message: "Email is already subscribed"})
         }
 
-    //     const subscribe = new Subscribe(req.body)
-    //     subscribe.save();
+        const subscribe = new Subscribe(req.body)
+        subscribe.save();
 
-       const messageResponse = await sendEmail(email)
+       await sendEmail(email);
 
         return res.status(200).json({message: "Subscribed"});
         
