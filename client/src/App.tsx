@@ -6,6 +6,7 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
 const What = lazy(() => import("./pages/What/What"));
 const Media = lazy(() => import("./pages/Media/Media"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 const NavLink = lazy(() => import('./components/Navlink/Navlink'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/what' element={<What />} />
           <Route path='/media' element={<Media />} />
+          <Route path='/contact' element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
