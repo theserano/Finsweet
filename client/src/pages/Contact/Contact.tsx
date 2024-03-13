@@ -1,11 +1,12 @@
 import "./contact.scss";
 import "../../styles/generic.scss";
-import { lazy, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import Socials from "../../assets/about/Social row.png";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContact } from "../../store/selector";
 import { setFirstName, setEmail, setLastName, setMessage, setSubject, contactDataType, submitContactForm } from "../../store/contactSlice";
 import { AppDispatch } from "../../store/store";
+import axios from "axios";
 
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
@@ -25,6 +26,7 @@ const Contact = () => {
     const [emptyE, setEmptyE] = useState(false);
     const [emptyS, setEmptyS] = useState(false);
     const [emptyM, setEmptyM] = useState(false);
+    const [key, setKey] = useState('');
 
     const handleContactSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -51,6 +53,18 @@ const Contact = () => {
         }
     }
 
+    const apiKey =  async () => {
+        const API_BASE_URL = 'http://localhost:5000'
+        const response = await axios.get(`${API_BASE_URL}/api/contact/api-key`)
+
+        return setKey(response.data.key);
+    }
+
+    useEffect(() => {
+        apiKey()
+      }, [])
+
+
   return (
     <div className="contact">
 
@@ -70,7 +84,7 @@ const Contact = () => {
                     </div>
                     <div className="contact_header_container_right_each flex flex-col gap-4">
                         <h4 className="heading_four">Head Office</h4>
-                        <p className="paragraph">8 Brewery Drive, Hudson, NH 03051<br/>USA</p>
+                        <p className="paragraph">288 Muritala Muhammed way<br/>NRA</p>
                     </div>
                     <div className="contact_header_container_right_each flex flex-col gap-4">
                         <h4 className="heading_four">Branch Office</h4>
@@ -166,6 +180,10 @@ const Contact = () => {
              onClick={handleContactSubmit}
             >Send message</button>
         </form>
+
+        <div>
+            
+        </div>
 
     </div>
   )
