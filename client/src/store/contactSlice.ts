@@ -15,14 +15,14 @@ export interface contactDataType {
 export interface stateType {
     loading: boolean,
     error: boolean,
-    message: string,
+    done: boolean,
     data: contactDataType
 }
 
 export const initialState: stateType = {
     loading: false,
     error: false,
-    message: '',
+    done: false,
     data: {
         firstName: '',
         lastName: '',
@@ -61,14 +61,16 @@ export const contactSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(submitContactForm.pending, (state) => {
             state.loading = true;
+            state.done = false
         });
-        builder.addCase(submitContactForm.fulfilled, (state, action: PayloadAction<string>) => {
-            state.message = action.payload;
+        builder.addCase(submitContactForm.fulfilled, (state) => {
+            state.done = true;
             state.loading = false;
         })
         builder.addCase(submitContactForm.rejected, (state) => {
             state.error = true;
             state.loading = false;
+            state.done = false;
         })
     }
 })
