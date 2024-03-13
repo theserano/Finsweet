@@ -1,12 +1,11 @@
 import "./contact.scss";
 import "../../styles/generic.scss";
-import { lazy, useEffect, useState } from "react";
+import { lazy, useState } from "react";
 import Socials from "../../assets/about/Social row.png";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContact } from "../../store/selector";
 import { setFirstName, setEmail, setLastName, setMessage, setSubject, contactDataType, submitContactForm } from "../../store/contactSlice";
 import { AppDispatch } from "../../store/store";
-import axios from "axios";
 
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
@@ -26,7 +25,8 @@ const Contact = () => {
     const [emptyE, setEmptyE] = useState(false);
     const [emptyS, setEmptyS] = useState(false);
     const [emptyM, setEmptyM] = useState(false);
-    const [key, setKey] = useState('');
+    const [error, setError] = useState(false);
+    const [done, setDone] = useState(false);
 
     const handleContactSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -46,23 +46,25 @@ const Contact = () => {
                 message: mes
             }
 
-             dispatch(submitContactForm(data))
+             await dispatch(submitContactForm(data))
+             if(contactDetails.error){
+                setError(true);
+                setTimeout(() => {
+                    setError(false);
+                }, 5000)
+             }
+             if(contactDetails.done){
+                setDone(true);
+                setTimeout(() => {
+                    setDone(false);
+                }, 5000)
+                console.log(done);
+             }
             console.log("doings");
         } catch (error) {
             console.log("error")
         }
     }
-
-    const apiKey =  async () => {
-        const API_BASE_URL = 'http://localhost:5000'
-        const response = await axios.get(`${API_BASE_URL}/api/contact/api-key`)
-
-        return setKey(response.data.key);
-    }
-
-    useEffect(() => {
-        apiKey()
-      }, [])
 
 
   return (
@@ -101,6 +103,8 @@ const Contact = () => {
 
         <form className="contact_form">
             {/* name block */}
+            {error && (<p className="paragraph_small contact_error">Something went wrong</p>)}
+            {done && (<p className="paragraph_small success">Thank you for filling the form</p>)}
             <div className="contact_form_top">
                 <div className="contact_form_top_name">
                     <label className="paragraph_small" htmlFor="fName">First Name</label>
@@ -181,8 +185,9 @@ const Contact = () => {
             >Send message</button>
         </form>
 
-        <div>
-            
+        <div className="map_responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.173280324398!2d3.3736769758848837!3d6.499735123437224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8c6109587b1f%3A0xdd6210419ac6bf44!2sThe%20Nest%20Lounge!5e0!3m2!1sen!2sng!4v1710346171210!5m2!1sen!2sng" width="600" height="450" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+            title="Meet us"></iframe>
         </div>
 
     </div>
