@@ -1,5 +1,6 @@
 import "./card.scss";
 import "../../styles/generic.scss";
+import { useNavigate } from "react-router-dom";
 
 interface cardProps {
     background: string,
@@ -9,7 +10,13 @@ interface cardProps {
 }
 
 
+
 const Card = ({background, header, text, button}: cardProps) => {
+
+    const navigate = useNavigate();
+    const moveToProjectsPage = () => {
+        navigate("/project")
+      }
   return (
     <div
         className="card"
@@ -21,7 +28,7 @@ const Card = ({background, header, text, button}: cardProps) => {
         <div className="card_details">
             <h1 className="heading_four">{header}</h1>
             <p className="paragraph_small">{text}</p>
-            <button className="white_btn">{button}</button>
+            <button onClick={moveToProjectsPage} className="white_btn">{button}</button>
         </div>
     </div>
   )

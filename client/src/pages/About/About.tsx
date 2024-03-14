@@ -3,6 +3,7 @@ import "../../styles/generic.scss";
 import "./about.scss";
 import { VideoProps } from "../Home/Home";
 import award from "../../assets/about/award.svg";
+import { useNavigate } from "react-router-dom";
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
 const TeamCard = lazy(() => import("../../components/card/TeamCard"));
@@ -12,6 +13,7 @@ const Event = lazy(() => import("../../components/event/Event"));
 
 const About = () => {
 
+    const navigate = useNavigate();
     const aboutVideoRef = useRef<VideoProps>(null);
     const handleFullScreenClick = () => {
         const video = aboutVideoRef.current;
@@ -27,6 +29,13 @@ const About = () => {
             video.play();
           }
     }
+
+    const moveToContactPage = () => {
+        navigate("/contact")
+      }
+      const moveToDonatePage = () => {
+        navigate("/donate")
+      }
 
   return (
     <div className="about">
@@ -164,7 +173,7 @@ const About = () => {
         </section>
 
         {/* meet our team */}
-        <section className="about_team container mx-auto">
+        <section id="team" className="about_team container mx-auto">
             <h2 className="heading_two text-center mb-4">Meet our team</h2>
             <p className="paragraph text-center mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
             <div className="about_team_cards">
@@ -216,8 +225,8 @@ const About = () => {
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
-                <button className="green_btn">Join as a volunteer</button>
-                <button className="white_btn">Donate</button>
+            <button onClick={moveToContactPage} className="green_btn">Join as a volunteer</button>
+                <button onClick={moveToDonatePage} className="white_btn">Donate</button>
             </div>
         </div>
       </div>

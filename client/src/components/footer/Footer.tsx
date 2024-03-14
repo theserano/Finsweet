@@ -57,17 +57,17 @@ const Footer = () => {
         <div className="footer_container_list flex gap-16">
             <div className="footer_container_list_each">
                 <h4 className="heading_four">Our team</h4>
-                <Link to=""><p>About us</p></Link>
-                <Link to=""><p>Team</p></Link>
-                <Link to=""><p>What we do</p></Link>
-                <Link to=""><p>Contact</p></Link>
+                <Link to="/about"><p>About us</p></Link>
+                <Link to="/about#team"><p>Team</p></Link>
+                <Link to="/what"><p>What we do</p></Link>
+                <Link to="/contact"><p>Contact</p></Link>
             </div>
             <div className="footer_container_list_each">
                 <h4 className="heading_four">More</h4>
-                <Link to=""><p>Projects</p></Link>
-                <Link to=""><p>Events</p></Link>
-                <Link to=""><p>Donate</p></Link>
-                <Link to=""><p>Blog</p></Link>
+                <Link to="/projects"><p>Projects</p></Link>
+                <Link to="/events"><p>Events</p></Link>
+                <Link to="/donate"><p>Donate</p></Link>
+                <Link to="/blog"><p>Blog</p></Link>
             </div>
             <div className="footer_container_list_each">
                 <h4 className="heading_four">Connect</h4>
