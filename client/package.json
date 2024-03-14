@@ -12,6 +12,9 @@
   "dependencies": {
     "@cloudinary/react": "^1.13.0",
     "@cloudinary/url-gen": "^1.19.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.13",
     "@reduxjs/toolkit": "^2.2.1",
     "@types/chart.js": "^2.9.41",
     "axios": "^1.6.7",
