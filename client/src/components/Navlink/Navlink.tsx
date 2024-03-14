@@ -53,7 +53,9 @@ const Navlink = () => {
                             <li>{item.text}</li>
                         </Link>
                     ))}
-                    <button className="black_btn">Donate</button>
+                    <button className="black_btn">
+                      <Link to="/donate">Donate</Link>  
+                    </button>
                 </ul>
             </div>
         </div>
