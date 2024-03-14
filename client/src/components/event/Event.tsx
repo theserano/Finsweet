@@ -1,5 +1,6 @@
 import "./event.scss";
 import "../../styles/generic.scss";
+import { useNavigate } from "react-router-dom";
 
 interface EventProps {
     day: string,
@@ -9,8 +10,14 @@ interface EventProps {
 
 
 const Event = ({day, month, text}: EventProps) => {
+
+  const navigate = useNavigate();
+  const moveToEventPage = () => {
+    navigate("/event")
+  }
+
   return (
-    <div className="event">
+    <div onClick={moveToEventPage} className="event">
         <div className="event_date">
             <h2 className="heading_two">{day}</h2>
             <p className="paragraph">{month}</p>

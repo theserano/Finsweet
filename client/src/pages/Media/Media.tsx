@@ -1,6 +1,7 @@
 import "./media.scss";
 import "../../styles/generic.scss";
 import { lazy } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
@@ -10,6 +11,12 @@ const Event = lazy(() => import("../../components/event/Event"));
 
 
 const Media = () => {
+
+    const navigate= useNavigate();
+    const moveToEventPage = () => {
+        navigate("/event");
+      }
+
   return (
     <div className="media">
 
@@ -22,7 +29,7 @@ const Media = () => {
                     <div className="media_header_container_left_details">
                         <h1 className="heading_one">Our goal is to make water available for everyone</h1>
                         <p className="paragraph_small">Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                        <button className="green_btn">Read more</button>
+                        <button onClick={moveToEventPage} className="green_btn">Read more</button>
                     </div>
                 </div>
                 {/* right side */}

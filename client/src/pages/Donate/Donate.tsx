@@ -1,6 +1,7 @@
 import "./donate.scss";
 import "../../styles/generic.scss";
 import { lazy } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
@@ -8,6 +9,15 @@ const DonateTabs = lazy(() => import("../../components/Tabs/DonateTabs"));
 
 
 const Donate = () => {
+
+    const navigate = useNavigate();
+    const moveToContactPage = () => {
+        navigate("/contact")
+      }
+      const moveToDonatePage = () => {
+        navigate("/donate")
+      }
+
   return (
     <div className="donate">
 
@@ -48,8 +58,8 @@ const Donate = () => {
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
-                <button className="green_btn">Join as a volunteer</button>
-                <button className="white_btn">Donate</button>
+            <button onClick={moveToContactPage} className="green_btn">Join as a volunteer</button>
+                <button onClick={moveToDonatePage} className="white_btn">Donate</button>
             </div>
         </div>
       </div>

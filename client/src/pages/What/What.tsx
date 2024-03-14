@@ -7,6 +7,7 @@ import icon2 from "../../assets/home/Icon (2).svg";
 import icon3 from "../../assets/home/Icon (3).svg";
 import icon4 from "../../assets/home/Icon (4).svg";
 import icon5 from "../../assets/home/Icon (5).svg";
+import { useNavigate } from "react-router-dom";
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
 const Card = lazy(() => import("../../components/card/Card"));
@@ -15,6 +16,15 @@ const NewsCard = lazy(() => import("../../components/card/NewsCard"));
 const Event = lazy(() => import("../../components/event/Event"));
 
 const What = () => {
+
+  const navigate = useNavigate();
+  const moveToContactPage = () => {
+    navigate("/contact")
+  }
+  const moveToDonatePage = () => {
+    navigate("/donate")
+  }
+
   return (
     <div className="what">
       <header className="what_header container mx-auto">
@@ -151,8 +161,8 @@ const What = () => {
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
-                <button className="green_btn">Join as a volunteer</button>
-                <button className="white_btn">Donate</button>
+            <button onClick={moveToContactPage} className="green_btn">Join as a volunteer</button>
+                <button onClick={moveToDonatePage} className="white_btn">Donate</button>
             </div>
         </div>
       </div>

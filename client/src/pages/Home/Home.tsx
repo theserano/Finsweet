@@ -6,6 +6,7 @@ import icon1 from "../../assets/home/Icon (1).svg";
 import icon2 from "../../assets/home/Icon (2).svg";
 import icon3 from "../../assets/home/Icon (3).svg";
 import { data } from "./data";
+import { useNavigate } from "react-router-dom";
 
 const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
 const Card = lazy(() => import("../../components/card/Card"));
@@ -21,6 +22,7 @@ export interface VideoProps extends HTMLVideoElement {
 
 const Home = () => {
   const videoRef = useRef<VideoProps>(null);
+  const navigate = useNavigate();
 
   const handleFullscreenClick = () => {
     const video = videoRef.current;
@@ -38,6 +40,19 @@ const Home = () => {
     }
   };
 
+  const moveToWhatPage = () => {
+    navigate("/what")
+  }
+  const moveToEventPage = () => {
+    navigate("/event");
+  }
+  const moveToContactPage = () => {
+    navigate("/contact")
+  }
+  const moveToDonatePage = () => {
+    navigate("/donate")
+  }
+
   return (
     <div className="home">
       <div className="home_header_container">
@@ -46,7 +61,7 @@ const Home = () => {
             <h1 className="home_heading">
               Save the environment today for a better tomorrow
             </h1>
-            <button className="white_btn">What we do</button>
+            <button  onClick={() => moveToWhatPage()} className="white_btn">What we do</button>
           </div>
           <div className="home_header_bottom">
             <span className="paragraph font-bold">23,800 trees planted</span>
@@ -78,7 +93,7 @@ const Home = () => {
                 cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus
                 tristique posuere.
               </p>
-              <button className="green_btn">Learn more</button>
+              <button onClick={moveToEventPage} className="green_btn">Learn more</button>
             </div>
           </div>
           {/* right side */}
@@ -297,8 +312,8 @@ const Home = () => {
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
-                <button className="green_btn">Join as a volunteer</button>
-                <button className="white_btn">Donate</button>
+                <button onClick={moveToContactPage} className="green_btn">Join as a volunteer</button>
+                <button onClick={moveToDonatePage} className="white_btn">Donate</button>
             </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../../styles/generic.scss";
 
 interface NewsCardProps {
@@ -6,9 +7,14 @@ interface NewsCardProps {
     text: string,
 }
 
+
 const NewsCard = ({image, header, text}: NewsCardProps) => {
+    const navigate = useNavigate();
+    const moveToBlogPage = () => {
+        navigate("/blog")
+    }
   return (
-    <div className="news_card">
+    <div onClick={moveToBlogPage} className="news_card">
         <div className="news_card_image" 
             style={{
                 backgroundImage: `url("${image}")`

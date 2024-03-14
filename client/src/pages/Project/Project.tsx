@@ -1,11 +1,22 @@
 import "./project.scss";
 import "../../styles/generic.scss";
 import { lazy } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const LinerHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
+const Card = lazy(() => import("../../components/card/Card"));
 
 const Project = () => {
+
+    const navigate = useNavigate();
+    const moveToContactPage = () => {
+        navigate("/contact")
+      }
+      const moveToDonatePage = () => {
+        navigate("/donate")
+      }
+
   return (
     <div className="project">
 
@@ -30,6 +41,40 @@ const Project = () => {
             </div>
 
         </div>
+"
+        <div className="py-28">
+            <article className="projects_cards">
+            <Card
+                background="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709733994/finsweet/home/Image_moyjgo.png"
+                header="Mission 40K: Tree plantation"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros."
+                button="See more"
+            />
+            <Card
+                background="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709733994/finsweet/home/Image_1_aefixs.png"
+                header="Weekly cleanliness program in city"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros."
+                button="See more"
+            />
+            <Card
+                background="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709733993/finsweet/home/Image_2_tzkhgd.png"
+                header="Wildlife safety program 2021"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros."
+                button="See more"
+            />
+            </article>
+        </div>
+
+        <div className="home_contribute container mx-auto">
+        <div className="tint"></div>
+        <div className="home_contribute_content">
+            <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
+            <div>
+            <button onClick={moveToContactPage} className="green_btn">Join as a volunteer</button>
+                <button onClick={moveToDonatePage} className="white_btn">Donate</button>
+            </div>
+        </div>
+      </div>
 
     </div>
   )
