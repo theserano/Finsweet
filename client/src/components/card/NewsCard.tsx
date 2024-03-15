@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/generic.scss";
 
 interface NewsCardProps {
@@ -14,17 +14,19 @@ const NewsCard = ({image, header, text}: NewsCardProps) => {
         navigate("/blog")
     }
   return (
-    <div onClick={moveToBlogPage} className="news_card">
-        <div className="news_card_image" 
-            style={{
-                backgroundImage: `url("${image}")`
-            }}
-        ></div>
-        <div className="news_card_details">
-            <h4 className="heading_four">{header}</h4>
-            <p className="paragraph_small">{text}</p>
+    <Link to="/blog">
+        <div onClick={moveToBlogPage} className="news_card">
+            <div className="news_card_image" 
+                style={{
+                    backgroundImage: `url("${image}")`
+                }}
+            ></div>
+            <div className="news_card_details">
+                <h4 className="heading_four">{header}</h4>
+                <p className="paragraph_small">{text}</p>
+            </div>
         </div>
-    </div>
+    </Link>
   )
 }
 

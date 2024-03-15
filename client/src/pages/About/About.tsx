@@ -1,4 +1,4 @@
-import { lazy, useRef } from "react"
+import { lazy, useEffect, useRef, useState } from "react"
 import "../../styles/generic.scss";
 import "./about.scss";
 import { VideoProps } from "../Home/Home";
@@ -15,6 +15,98 @@ const About = () => {
 
     const navigate = useNavigate();
     const aboutVideoRef = useRef<VideoProps>(null);
+
+    const headerLeftRef = useRef(null);
+    const headerRightRef = useRef(null);
+    const videoRef = useRef(null);
+    const awardRef = useRef(null);
+    const journeyRef = useRef(null);
+    const jPicRef = useRef(null);
+    const contRef = useRef(null)
+    const newsRef = useRef(null);
+
+    const [headerLeft, setHeaderLeft] = useState(false);
+    const [headerRight, setHeaderRight] = useState(false);
+    const [headerVideo, setVideo] = useState(false);
+    const [awards, setAwards] = useState(false);
+    const [journey, setJourney] = useState(false);
+    const [journeyPic, setJourneyPic] = useState(false);
+    const [cont, setCont] = useState(false);
+    const [newsCards, setNewsCards] = useState(false);
+
+
+    useEffect(() => {
+
+        const header_left = headerLeftRef.current;
+        const header_right = headerRightRef.current;
+        const video = videoRef.current;
+        const awa = awardRef.current;
+        const jour = journeyRef.current;
+        const jPic = jPicRef.current;
+        const contribute = contRef.current;
+        const news = newsRef.current;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.target === headerLeftRef.current){
+                    setHeaderLeft(entry.isIntersecting);
+                }
+                if(entry.target === headerRightRef.current){
+                    setHeaderRight(entry.isIntersecting);
+                }
+                if(entry.target === videoRef.current){
+                    setVideo(entry.isIntersecting);
+                }
+                if(entry.target === awardRef.current){
+                    setAwards(entry.isIntersecting);
+                }
+                if(entry.target === journeyRef.current){
+                    setJourney(entry.isIntersecting);
+                }
+                if(entry.target === jPicRef.current){
+                    setJourneyPic(entry.isIntersecting);
+                }
+                if(entry.target === contRef.current){
+                    setCont(entry.isIntersecting);
+                }
+                else if(entry.target === newsRef.current){
+                    setNewsCards(entry.isIntersecting);
+                }
+            })
+        }, {threshold: 0.2})
+
+        if(header_left){
+            observer.observe(header_left)
+        }
+        if(header_right){
+            observer.observe(header_right)
+        }
+        if(video){
+            observer.observe(video)
+        }
+        if(awa){
+            observer.observe(awa)
+        }
+        if(jour){
+            observer.observe(jour);
+        }
+        if(jPic){
+            observer.observe(jPic);
+        }
+        if(contribute){
+            observer.observe(contribute)
+        }
+        if(news){
+            observer.observe(news);
+        }
+
+        return () => {
+            observer.disconnect();
+        }
+
+    }, [])
+
+
     const handleFullScreenClick = () => {
         const video = aboutVideoRef.current;
         if (video) {
@@ -41,11 +133,11 @@ const About = () => {
     <div className="about">
         {/* header section */}
         <header className="container mx-auto mt-20 about_header">
-            <div className="about_header_left">
+            <div ref={headerLeftRef} className={`about_header_left ${headerLeft ? "about_header_left_show" : ""}`}>
                 <LineHeader text="KNOW ABOUT US" />
                 <h2 className="heading_two">We are a nonprofit team working worldwide</h2>
             </div>
-            <div className="about_header_right">
+            <div ref={headerRightRef} className={`about_header_right ${headerRight ? "about_header_right_show" : ""}`}>
                 <h4 className="heading_four">Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</h4>
                 <p className="paragraph_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Suspendisse varius enim elementum tristique.</p>
             </div>
@@ -56,11 +148,11 @@ const About = () => {
         {/* mission and vision */}
         <section className="about_mission">
             {/* video */}
-            <div className="about_mission_video">
+            <div ref={videoRef} className={`about_mission_video ${headerVideo ? "about_mission_video_show" : ""}`}>
                 <button onClick={handleFullScreenClick}>
                     <video
                         ref={aboutVideoRef}
-                        className="about_video"
+                        className={`about_video`}
                         poster="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709840099/finsweet/home/Video_jj6k5s.png"
                     >
                         <source src="https://res.cloudinary.com/dfltu5jw4/video/upload/v1709838720/finsweet/home/Seven_Billion_Dreams._One_Planet._Consume_with_Care._bqmbd4.mp4" />
@@ -80,6 +172,7 @@ const About = () => {
                         <p className="paragraph_small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
                     </div>
                 </div>
+
                 <article className="home_know_bottom">
                     <div className="home_know_bottom_our">
                         <span className="paragraph">OUR SUPPORTERS</span>
@@ -112,6 +205,7 @@ const About = () => {
                         />
                     </div>
                 </article>
+
             </div>
         </section>
 
@@ -120,25 +214,25 @@ const About = () => {
             <h2 className="heading_two">Awards & Recognitions</h2>
 
             <article className="about_awards_category">
-                <div className="about_awards_category_each">
+                <div ref={awardRef} className={`about_awards_category_each ${awards ? "about_awards_category_each_show" : ""}`}>
                     <img src={award} alt="award" />
                     <h3 className="heading_four">2021</h3>
                     <h5 className="heading_five">Bes NGO Award</h5>
                     <p className="paragraph_small">BERLIN, GERMANY</p>
                 </div>
-                <div className="about_awards_category_each">
+                <div ref={awardRef} className={`about_awards_category_each ${awards ? "about_awards_category_each_show" : ""}`}>
                     <img src={award} alt="award" />
                     <h3 className="heading_four">2021</h3>
                     <h5 className="heading_five">Bes NGO Award</h5>
                     <p className="paragraph_small">BERLIN, GERMANY</p>
                 </div>
-                <div className="about_awards_category_each">
+                <div ref={awardRef} className={`about_awards_category_each ${awards ? "about_awards_category_each_show" : ""}`}>
                     <img src={award} alt="award" />
                     <h3 className="heading_four">2021</h3>
                     <h5 className="heading_five">Bes NGO Award</h5>
                     <p className="paragraph_small">BERLIN, GERMANY</p>
                 </div>
-                <div className="about_awards_category_each">
+                <div ref={awardRef} className={`about_awards_category_each ${awards ? "about_awards_category_each_show" : ""}`}>
                     <img src={award} alt="award" />
                     <h3 className="heading_four">2021</h3>
                     <h5 className="heading_five">Bes NGO Award</h5>
@@ -148,7 +242,7 @@ const About = () => {
         </section>
 
         <section className="about_journey md:container mx-auto">
-            <div className="about_journey_left">
+            <div ref={journeyRef} className={`about_journey_left ${journey ? "about_journey_left_show" : ""}`}>
                 <h5 className="heading_five">OUR JOURNEY</h5>
                 <h2 className="heading_two">How we raised 34M</h2>
                 <p className="paragraph_small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil inventore itaque vitae porro possimus fugiat, assumenda natus! Magnam numquam eligendi unde tempora. Sequi inventore numquam nemo a voluptate quibusdam explicabo.</p>
@@ -167,7 +261,7 @@ const About = () => {
                     </span>
                 </div>
             </div>
-            <div className="about_journey_right">
+            <div ref={jPicRef} className={`about_journey_right ${journeyPic ? "about_journey_right_show" : ""}`}>
                 <img src="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709845280/finsweet/home/Image_tera1n.png" alt="journey" />
             </div>
         </section>
@@ -221,7 +315,7 @@ const About = () => {
         </section>
 
         <div className="home_contribute container mx-auto">
-        <div className="tint"></div>
+        <div ref={contRef} className={`tint ${cont ? "tint_show" : ""}`}></div>
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
@@ -233,7 +327,7 @@ const About = () => {
 
       <TitleLine text="Read Our News" />
 
-      <section className="home_card_news">
+      <section ref={newsRef} className={`home_card_news ${newsCards ? "home_card_news_show" : ""} `}>
         <NewsCard 
             image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818409/finsweet/home/Thumbnail_hcjdoz.png"
             header="Don't destroy greenery and don't spoil scenery"
