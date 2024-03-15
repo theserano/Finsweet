@@ -80,6 +80,11 @@
     width: 100%;
     height: 100%;
     background-color: rgba( $black, 0.5);
+    opacity: 0.1;
+    transition: opacity ease-in-out 2s;
+}
+.tint_show{
+    opacity: 1;
 }
 
 .home_contribute{
@@ -144,6 +149,11 @@
     gap: 2rem;
     flex-wrap: wrap;
     margin-bottom: 5rem;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+.home_card_news_show{
+    opacity: 1;
 }
 
 .projects{
@@ -151,6 +161,7 @@
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 5rem;
+    overflow: hidden;
 
     h1{
         padding-left: 5rem;
@@ -163,7 +174,14 @@
         flex-wrap: wrap;
         gap: 3rem;
         justify-content: space-evenly;
+        transform: translateX(-200px);
+        opacity: 0;
+        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
     }
+}
+.projects_cards_show{
+    transform: translateX(0px);
+    opacity: 1;
 }
 
 

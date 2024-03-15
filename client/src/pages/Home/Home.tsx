@@ -1,6 +1,6 @@
 import "./home.scss";
 import "../../styles/generic.scss";
-import { lazy, useRef } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import icon from "../../assets/home/Icon.svg";
 import icon1 from "../../assets/home/Icon (1).svg";
 import icon2 from "../../assets/home/Icon (2).svg";
@@ -21,8 +21,122 @@ export interface VideoProps extends HTMLVideoElement {
 }
 
 const Home = () => {
-  const videoRef = useRef<VideoProps>(null);
+
   const navigate = useNavigate();
+  const [header, setHeader] = useState(false);
+  const [knowBottom, setKnowBottom] = useState(false);
+  const [slideVideo, setSlideVideo] = useState(false);
+  const [slideWhatBottom, setSlideWhatBottom] = useState(false);
+  const [slideWhatRight, setSlideWhatRight] = useState(false);
+  const [cardSlide, setCardSlide] = useState(false);
+  const [spendSlide, setSpendSlide] = useState(false);
+  const [chartShow, setChartShow] = useState(false);
+  const [newsCards, setNewsCards] = useState(false);
+  const [cont, setCont] = useState(false);
+  
+  
+  const headerRef = useRef(null);
+  const knowBottomRef = useRef(null);
+  const videoRef = useRef<VideoProps>(null);
+  const homeVideoRef = useRef(null);
+  const whatBottomRef = useRef(null);
+  const whatRightRef = useRef(null);
+  const cardsRef = useRef(null);
+  const spendRef = useRef(null);
+  const chartRef = useRef(null);
+  const newsRef = useRef(null);
+  const contRef = useRef(null)
+
+
+  useEffect(() => {
+    
+    const home_header = headerRef.current;
+    const know_bottom = knowBottomRef.current;
+    const video_know = homeVideoRef.current;
+    const what_bottom = whatBottomRef.current;
+    const what_right = whatRightRef.current;
+    const cards = cardsRef.current;
+    const spend = spendRef.current;
+    const chart = chartRef.current;
+    const news = newsRef.current;
+    const contribute = contRef.current;
+
+    const observer = new IntersectionObserver((entries) =>{
+        entries.forEach(entry => {
+            if(entry.target === home_header){
+              setHeader(entry.isIntersecting);   
+            }
+            else if(entry.target === knowBottomRef.current){
+              setKnowBottom(entry.isIntersecting);
+            }
+            else if(entry.target === homeVideoRef.current){
+              setSlideVideo(entry.isIntersecting);
+            }
+            else if(entry.target === whatBottomRef.current){
+              setSlideWhatBottom(entry.isIntersecting);
+            }
+            else if(entry.target === whatRightRef.current){
+              setSlideWhatRight(entry.isIntersecting);              
+            }
+            else if(entry.target === cardsRef.current){
+              setCardSlide(entry.isIntersecting);
+            }
+            else if (entry.target === spendRef.current){
+              setSpendSlide(entry.isIntersecting);
+            }
+            else if(entry.target === chartRef.current){
+              setChartShow(entry.isIntersecting);
+            }
+            else if(entry.target === newsRef.current){
+              setNewsCards(entry.isIntersecting);
+            }
+            else if(entry.target === contRef.current){
+              setCont(entry.isIntersecting);
+            }
+        });
+    }, {
+        threshold: 0.2,
+    });
+
+    if(home_header){
+        observer.observe(home_header);
+    }
+    if(know_bottom){
+      observer.observe(know_bottom);
+    }
+    if(video_know){
+      observer.observe(video_know);
+    }
+    if(what_bottom){
+      observer.observe(what_bottom);
+    }
+    if(what_right){
+      observer.observe(what_right);
+    }
+    if(cards){
+      observer.observe(cards);
+    }
+    if(spend){
+      observer.observe(spend);
+    }
+    if(chart){
+      observer.observe(chart)
+    }
+    if(news){
+      observer.observe(news);
+    }
+    if(contribute){
+      observer.observe(contribute)
+    }
+
+
+
+    return () => {
+        observer.disconnect();
+    }
+
+}, [knowBottom])
+
 
   const handleFullscreenClick = () => {
     const video = videoRef.current;
@@ -53,10 +167,12 @@ const Home = () => {
     navigate("/donate")
   }
 
+  
+
   return (
     <div className="home">
-      <div className="home_header_container">
-        <div className="home_header container mx-auto">
+      <div  className="home_header_container">
+        <div ref={headerRef} className={`home_header container mx-auto ${header ? 'home_header_show' : ''}`}>
           <div className="home_header_top">
             <h1 className="home_heading">
               Save the environment today for a better tomorrow
@@ -79,11 +195,13 @@ const Home = () => {
           {/* left side */}
           <div className="home_know_top_left">
             <LineHeader text={`KNOW ABOUT US`} />
-            <div className="home_know_top_left_bottom">
-              <h1 className="heading_two">
+            <div ref={knowBottomRef} 
+            className={`home_know_top_left_bottom ${knowBottom ? "home_know_top_left_show" : ""}`}>
+              <h1 
+              className={`heading_two home_know_top_left_bottom_h1`}>
                 We help nature smile and survive everywhere
               </h1>
-              <p className="paragraph_small">
+              <p className={`paragraph_small`}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse varius enim in eros elementum tristique.
               </p>
@@ -98,11 +216,10 @@ const Home = () => {
           </div>
           {/* right side */}
           <div className="home_know_top_right">
-            <button onClick={handleFullscreenClick}>
+            <button ref={homeVideoRef} className={`home_know_top_right_video ${slideVideo ? "home_know_top_right_video_show" : ""}`} onClick={handleFullscreenClick}>
               <video
                 ref={videoRef}
                 poster="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709712625/finsweet/home/Video-cover_bbvynn.png"
-                className="home_know_top_right_video"
               >
                 <source src="https://res.cloudinary.com/dfltu5jw4/video/upload/v1709653114/finsweet/udclhcttp81btgboenn3.mp4" />
               </video>
@@ -151,7 +268,7 @@ const Home = () => {
           {/* left side */}
           <article className="home_what_left">
             <LineHeader text="WHAT WE DO" />
-            <div className="home_what_left_bottom">
+            <div ref={whatBottomRef} className={`home_what_left_bottom ${slideWhatBottom ? "home_what_left_bottom_show" : ""}`}>
               <h1 className="heading_two">
                 We care for earth, care for the coming birth
               </h1>
@@ -213,8 +330,10 @@ const Home = () => {
             </div>
           </article>
           {/* right side */}
-          <article className="home_what_right">
+          <article className={`home_what_right`}>
             <img
+            ref={whatRightRef}
+            className={`home_what_right_image ${slideWhatRight ? "home_what_right_image_show" : ""}`}
               src="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709730289/finsweet/home/Image_pksrfg.png"
               alt="stuff"
             />
@@ -228,7 +347,7 @@ const Home = () => {
         <h1 className="heading_two">
           We are Creating sustainable society, for everyone and forever.
         </h1>
-        <article className="projects_cards">
+        <article ref={cardsRef} className={`projects_cards ${cardSlide ? "projects_cards_show" : ""}`}>
           <Card
             background="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709733994/finsweet/home/Image_moyjgo.png"
             header="Mission 40K: Tree plantation"
@@ -254,7 +373,7 @@ const Home = () => {
       <section className="home_spend_container">
         <section className="home_spend container mx-auto">
           {/* left side */}
-          <article className="home_spend_left">
+          <article ref={spendRef} className={`home_spend_left ${spendSlide ? "home_spend_left_show" : ""}`}>
             <h1 className="heading_one">
               How we spend your donations and where it goes
             </h1>
@@ -301,14 +420,14 @@ const Home = () => {
             </div>
           </article>
           {/* right side */}
-          <article className="home_spend_right">
-            <Chart data={data} />
+          <article ref={chartRef} className={`home_spend_right`}>
+            {chartShow && (<Chart data={data} />)}
           </article>
         </section>
       </section>
 
       <div className="home_contribute container mx-auto">
-        <div className="tint"></div>
+        <div ref={contRef} className={`tint ${cont ? "tint_show" : ""}`}></div>
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
@@ -320,7 +439,7 @@ const Home = () => {
 
       <TitleLine text="Read Our News" />
 
-      <section className="home_card_news">
+      <section ref={newsRef} className={`home_card_news ${newsCards ? "home_card_news_show" : ""}`}>
         <NewsCard 
             image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818409/finsweet/home/Thumbnail_hcjdoz.png"
             header="Don't destroy greenery and don't spoil scenery"

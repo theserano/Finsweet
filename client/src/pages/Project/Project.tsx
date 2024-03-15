@@ -12,10 +12,12 @@ const Project = () => {
     const navigate = useNavigate();
     const moveToContactPage = () => {
         navigate("/contact")
-      }
-      const moveToDonatePage = () => {
+    }
+    const moveToDonatePage = () => {
         navigate("/donate")
-      }
+    }
+
+    
 
   return (
     <div className="project">
