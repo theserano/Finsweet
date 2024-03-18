@@ -17,6 +17,11 @@ app.use("/api/subscribe", subscribeRoutes);
 app.use("/api/contact", contactRoutes)
 app.use(express.static(path.join(__dirname, "../../client/dist")));
 
+// Catch-all route handler to serve index.html for any other route
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../../client/dist", "index.html"));
+  });
+
 const connectionString = process.env.MONGODB_URL as string
 mongoose.connect(connectionString);
 const db = mongoose.connection;
