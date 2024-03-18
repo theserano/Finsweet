@@ -60,6 +60,7 @@ const Home = () => {
     const chart = chartRef.current;
     const news = newsRef.current;
     const contribute = contRef.current;
+    
 
     const observer = new IntersectionObserver((entries) =>{
         entries.forEach(entry => {

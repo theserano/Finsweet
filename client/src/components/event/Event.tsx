@@ -13,7 +13,7 @@ const Event = ({day, month, text}: EventProps) => {
 
   const navigate = useNavigate();
   const moveToEventPage = () => {
-    navigate("/event")
+    navigate("/events")
   }
 
   return (
