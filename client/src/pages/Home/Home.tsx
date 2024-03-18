@@ -136,7 +136,7 @@ const Home = () => {
         observer.disconnect();
     }
 
-}, [knowBottom])
+}, [])
 
 
   const handleFullscreenClick = () => {
