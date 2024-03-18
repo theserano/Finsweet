@@ -4,10 +4,7 @@ import Logo from "../logo/Logo";
 import {Link} from "react-router-dom";
 import { useState } from "react";
 import { setEmail, subscribeWithEmail } from "../../store/subscribe/subscribeSlice";
-import { useAppDispatch,
-     useAppSelector
-     } from "../../store/hooks";
-import { selectSubscribe } from "../../store/selector";
+import { useAppDispatch } from "../../store/hooks";
 
  export interface dataType {
     email: string
@@ -20,7 +17,6 @@ const Footer = () => {
     const [emptyError, setEmptyError] = useState(false);
     const [subscribed, setSubscribed] = useState(false);
     const dispatch = useAppDispatch();
-    const subscribe = useAppSelector(selectSubscribe)
 
     const handleSubscribe = async (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
@@ -32,14 +28,16 @@ const Footer = () => {
             const data: dataType = {
                 email: emailValue
             }
-            await dispatch(subscribeWithEmail(data));
-
-            if(subscribe.done === true){
+            await dispatch(subscribeWithEmail(data)).then(() => {
+                setEmail("");
                 setSubscribed(true);
                 setTimeout(() => {
                     setSubscribed(false);
                 }, 2000)
-            }
+            }).catch(() => {
+                console.log("error");
+                
+            })
         } catch (error) {
             console.log(error);
         }
@@ -83,7 +81,8 @@ const Footer = () => {
             <form onSubmit={handleSubscribe}>
                 <input 
                 type="email" 
-                placeholder="Your email" 
+                placeholder="Your email"
+                value={emailValue}
                 onChange={(e) => {
                     setEmailValue(e.target.value)
                     setEmptyError(false);
