@@ -1,6 +1,6 @@
 import "./media.scss";
 import "../../styles/generic.scss";
-import { lazy } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -15,7 +15,57 @@ const Media = () => {
     const navigate= useNavigate();
     const moveToEventPage = () => {
         navigate("/event");
-      }
+    }
+
+
+    const headerLeftRef = useRef(null);
+    const headerRightRef = useRef(null);
+    const newsRef = useRef(null);
+
+
+    const [headerLeft, setHeaderLeft] = useState(false);
+    const [headerRight, setHeaderRight] = useState(false);
+    const [newsCards, setNewsCards] = useState(false);
+
+
+  useEffect(() => {
+
+    const header_left = headerLeftRef.current;
+    const header_right = headerRightRef.current;
+    const news = newsRef.current;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.target === headerLeftRef.current){
+          setHeaderLeft(entry.isIntersecting);
+        }
+        if(entry.target === headerRightRef.current){
+          setHeaderRight(entry.isIntersecting);
+        }
+        if(entry.target === newsRef.current){
+          setNewsCards(entry.isIntersecting);
+        }
+      })
+    }, {threshold: 0.2})
+
+    if(header_left){
+      observer.observe(header_left);
+    }
+    if(header_right){
+      observer.observe(header_right);
+    }
+    if(news){
+      observer.observe(news);
+    }
+
+
+    return () => {
+      observer.disconnect();
+    }
+
+  }, [])
+
+
 
   return (
     <div className="media">
@@ -24,7 +74,7 @@ const Media = () => {
             {/* container */}
             <div className="media_header_container container mx-auto">
                 {/* left side */}
-                <div className="media_header_container_left">
+                <div ref={headerLeftRef} className={`media_header_container_left ${headerLeft ? "media_header_container_left_show" : ""}`}>
                     <LineHeader text="TOP NEWS" />
                     <div className="media_header_container_left_details">
                         <h1 className="heading_one">Our goal is to make water available for everyone</h1>
@@ -33,7 +83,7 @@ const Media = () => {
                     </div>
                 </div>
                 {/* right side */}
-                <div className="media_header_container_right">
+                <div ref={headerRightRef} className={`media_header_container_right ${headerRight ? "media_header_container_right_show" : ""}`}>
                         <div className="media_header_container_right_div">
                             <div className="media_header_container_right_div_image">
                                 <img src="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709891618/finsweet/home/Image_grepy9.png" alt="stuff" />
@@ -70,7 +120,7 @@ const Media = () => {
             <p className="paragraph_small text-center mb-16">Edit this text to make it your own. To edit, simply click directly on the text to start We are served</p>
         </div>
 
-        <section className="home_card_news">
+        <section ref={newsRef} className={`home_card_news ${newsCards ? "home_card_news_show" : ""}`}>
         <NewsCard 
             image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818409/finsweet/home/Thumbnail_hcjdoz.png"
             header="Don't destroy greenery and don't spoil scenery"

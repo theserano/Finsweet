@@ -46,7 +46,7 @@ export const contactSlice = createSlice({
             state.data.firstName = action.payload
         },
         setLastName: (state, action: PayloadAction<string>) => {
-            state.data.firstName = action.payload
+            state.data.lastName = action.payload
         },
         setEmail: (state, action: PayloadAction<string>) => {
             state.data.email = action.payload

@@ -1,9 +1,8 @@
 import "./contact.scss";
 import "../../styles/generic.scss";
-import { lazy, useState } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import Socials from "../../assets/about/Social row.png";
-import { useDispatch, useSelector } from "react-redux";
-import { selectContact } from "../../store/selector";
+import { useDispatch } from "react-redux";
 import { setFirstName, setEmail, setLastName, setMessage, setSubject, contactDataType, submitContactForm } from "../../store/contactSlice";
 import { AppDispatch } from "../../store/store";
 
@@ -13,7 +12,6 @@ const LineHeader = lazy(() => import("../../components/lineHeader/LineHeader"));
 
 const Contact = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const contactDetails = useSelector(selectContact);
 
     const [fir, setFir] = useState("");
     const [las, setLas] = useState("");
@@ -27,6 +25,41 @@ const Contact = () => {
     const [emptyM, setEmptyM] = useState(false);
     const [error, setError] = useState(false);
     const [done, setDone] = useState(false);
+    const [headerLeft, setHeaderLeft] = useState(false);
+    const [headerRight, setHeaderRight] = useState(false);
+
+
+    const headerLeftRef = useRef(null);
+    const headerRightRef = useRef(null);
+
+    useEffect(() => {
+
+        const header_left = headerLeftRef.current;
+        const header_right = headerRightRef.current;
+
+        const observer =  new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.target === headerLeftRef.current){
+                    setHeaderLeft(entry.isIntersecting);
+                }
+                if(entry.target === headerRightRef.current){
+                    setHeaderRight(entry.isIntersecting);
+                }
+            })
+        }, {threshold: 0.2})
+
+        if(header_left){
+            observer.observe(header_left);
+        }
+        if(header_right){
+            observer.observe(header_right)
+        }
+
+        return () => {
+            observer.disconnect();
+        }
+
+    }, [])
 
     const handleContactSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -46,21 +79,22 @@ const Contact = () => {
                 message: mes
             }
 
-             await dispatch(submitContactForm(data))
-             if(contactDetails.error){
+             await dispatch(submitContactForm(data)).then(() => {
+                 setDone(true);
+                 setTimeout(() => {
+                     setDone(false);
+                 }, 5000)
+                 setFir("");
+                 setEma("");
+                 setLas("");
+                 setSub("");
+                 setMes("")
+             }).catch(() => {
                 setError(true);
-                setTimeout(() => {
-                    setError(false);
-                }, 5000)
-             }
-             if(contactDetails.done){
-                setDone(true);
-                setTimeout(() => {
-                    setDone(false);
-                }, 5000)
-                console.log(done);
-             }
+             })
             console.log("doings");
+             
+             
         } catch (error) {
             console.log("error")
         }
@@ -72,14 +106,14 @@ const Contact = () => {
 
         <header className="contact_header">
         <div className="contact_header_container container mx-auto">
-            <div className="contact_header_container_left">
+            <div ref={headerLeftRef} className={`contact_header_container_left ${headerLeft ? "contact_header_container_left_show" : ""}`}>
                 <LineHeader text="CONTACT US" />
                 <div className="contact_header_container_left_bottom">
                     <h1 className="heading_one">We'd love to hear from you</h1>
                     <p className="paragraph_small">Have any question in mind or want to enquire? Please feel free to contact us through the form or the following details.</p>
                 </div>
             </div>
-                <div className="contact_header_container_right">
+                <div ref={headerRightRef} className={`contact_header_container_right ${headerRight ? "contact_header_container_right_show" : ""}`}>
                     <div className="contact_header_container_right_each flex flex-col gap-4">
                         <h4 className="heading_four">Let's talk</h4>
                         <p className="paragraph"><span style={{paddingRight: "1rem"}}>+1 23 456 789</span> <span>hello@finsweet.com</span></p>
@@ -111,6 +145,7 @@ const Contact = () => {
                     <input
                     className="paragraph"
                      type="text"
+                     value={fir}
                      onChange={(e) => {
                         setEmptyF(false)
                          setFir(e.target.value)
@@ -124,6 +159,7 @@ const Contact = () => {
                     <input
                     className="paragraph"
                      type="text"
+                     value={las}
                      onChange={(e) => {
                         setEmptyL(false)
                         setLas(e.target.value)
@@ -140,6 +176,7 @@ const Contact = () => {
                     <input
                     className="paragraph" 
                     type="email"
+                    value={ema}
                     onChange={(e) => {
                         setEmptyE(false)
                         setEma(e.target.value)
@@ -153,6 +190,7 @@ const Contact = () => {
                     <input
                     className="paragraph" 
                         type="text"
+                        value={sub}
                         onChange={(e) => {
                             setEmptyS(false)
                             setSub(e.target.value)
@@ -171,6 +209,7 @@ const Contact = () => {
                         id="message" 
                         cols={30} 
                         rows={5}
+                        value={mes}
                         onChange={(e) => {
                             setEmptyM(false)
                             setMes(e.target.value)

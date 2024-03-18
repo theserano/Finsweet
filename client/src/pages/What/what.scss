@@ -13,13 +13,24 @@
         flex-direction: column;
         justify-content: center;
         gap: 2rem;
+        transform: translateX(-200px);
+        opacity: 0;
+        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
     }
     &_right{
         display: flex;
         justify-content: center;
         align-items: center;
+        transform: translateX(200px);
+        opacity: 0;
+        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
     }
 
+}
+
+.what_header_left_show, .what_header_right_show{
+    transform: translateX(0px);
+    opacity: 1;
 }
 
 .what_env{

@@ -9,6 +9,8 @@
     width: 400px;
     padding: 2rem;
     border-radius: 10px;
+    transition: $transition;
+    cursor: default;
 
     &_date{
         display: flex;
@@ -43,6 +45,9 @@
             font-weight: 600;
         }
     }
+}
+.event:hover{
+    background-color: $green-secondary;
 }
 
 @media screen and (max-width: 500px) {

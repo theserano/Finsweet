@@ -1,6 +1,7 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Loader from './components/Loader/Loader';
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
@@ -17,26 +18,39 @@ const Footer = lazy(() => import('./components/footer/Footer'));
 
 function App() {
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); 
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
 
   return (
     <>
-    <Suspense>
-      <Router>
-        <NavLink /> 
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/what' element={<What />} />
-          <Route path='/media' element={<Media />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/donate' element={<Donate />} />
-          <Route path='/project' element={<Project />} />
-          <Route path='/blog' element={<Blog />} />
-          <Route path='/events' element={<Events />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </Suspense>
+    {loading ? 
+      <Loader /> :  
+      <Suspense fallback={<Loader />}>
+        <Router>
+          <NavLink /> 
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/what' element={<What />} />
+            <Route path='/media' element={<Media />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/donate' element={<Donate />} />
+            <Route path='/project' element={<Project />} />
+            <Route path='/blog' element={<Blog />} />
+            <Route path='/events' element={<Events />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </Suspense>
+    }
     </>
   )
 }

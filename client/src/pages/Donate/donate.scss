@@ -13,6 +13,9 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            transform: translateX(-200px);
+            opacity: 0;
+            transition: transform 1s ease-in-out, opacity 2s ease-in-out;
 
             &_bottom{
                 display: flex;
@@ -27,8 +30,17 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
         }
     }
+}
+.donate_header_container_left_show{
+    opacity: 1;
+    transform: translateX(0);
+}
+.donate_header_container_right_show{
+    opacity: 1;
 }
 
 .donate_contribute{
@@ -44,13 +56,31 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        transform: translateX(-200px);
+        opacity: 0;
+        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
     }
+    &_right{
+        opacity: 0;
+        transform: translateX(200px);
+        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
+    }
+}
+.donate_contribute_left_show, .donate_contribute_right_show{
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .donation_use{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.donation_use_show{
+    opacity: 1;
 }
 
 

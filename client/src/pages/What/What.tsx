@@ -1,6 +1,6 @@
 import "./what.scss";
 import "../../styles/generic.scss";
-import { lazy } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import icon from "../../assets/home/Icon.svg";
 import icon1 from "../../assets/home/Icon (1).svg";
 import icon2 from "../../assets/home/Icon (2).svg";
@@ -25,10 +25,75 @@ const What = () => {
     navigate("/donate")
   }
 
+  const headerLeftRef = useRef(null);
+  const headerRightRef = useRef(null);
+  const cardsRef = useRef(null);
+  const contRef = useRef(null);
+  const newsRef = useRef(null);
+
+
+  const [headerLeft, setHeaderLeft] = useState(false);
+  const [headerRight, setHeaderRight] = useState(false);
+  const [cardSlide, setCardSlide] = useState(false);
+  const [cont, setCont] = useState(false);
+  const [newsCards, setNewsCards] = useState(false);
+
+
+  useEffect(() => {
+
+    const header_left = headerLeftRef.current;
+    const header_right = headerRightRef.current;
+    const cards = cardsRef.current;
+    const contribute = contRef.current;
+    const news = newsRef.current;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.target === headerLeftRef.current){
+          setHeaderLeft(entry.isIntersecting);
+        }
+        if(entry.target === headerRightRef.current){
+          setHeaderRight(entry.isIntersecting);
+        }
+        if(entry.target === cardsRef.current){
+          setCardSlide(entry.isIntersecting);
+        }
+        if(entry.target === contRef.current){
+          setCont(entry.isIntersecting);
+        }
+        if(entry.target === newsRef.current){
+          setNewsCards(entry.isIntersecting);
+        }
+      })
+    }, {threshold: 0.2})
+
+    if(header_left){
+      observer.observe(header_left);
+    }
+    if(header_right){
+      observer.observe(header_right);
+    }
+    if(cards){
+      observer.observe(cards);
+    }
+    if(contribute){
+      observer.observe(contribute)
+    }
+    if(news){
+      observer.observe(news);
+    }
+
+
+    return () => {
+      observer.disconnect();
+    }
+
+  }, [])
+
   return (
     <div className="what">
       <header className="what_header container mx-auto">
-        <div className="what_header_left">
+        <div ref={headerLeftRef} className={`what_header_left ${headerLeft ? "what_header_left_show" : ""}`}>
           <LineHeader text="WHAT WE DO" />
           <h1 className="heading_one">We are working worldwide</h1>
           <p className="paragraph">
@@ -38,7 +103,7 @@ const What = () => {
             est labore totam!
           </p>
         </div>
-        <div className="what_header_right">
+        <div ref={headerRightRef} className={`what_header_right ${headerRight ? "what_header_right_show" : ""}`}>
           <img
             src="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709882785/finsweet/home/Image_p04dg4.png"
             alt="what"
@@ -134,7 +199,7 @@ const What = () => {
 
         {/* projects card */}
       <section className="projects container mx-auto">
-        <article className="projects_cards">
+        <article ref={cardsRef} className={`projects_cards ${cardSlide ? "projects_cards_show" : ""}`}>
           <Card
             background="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709733994/finsweet/home/Image_moyjgo.png"
             header="Mission 40K: Tree plantation"
@@ -157,7 +222,7 @@ const What = () => {
       </section>
 
       <div className="home_contribute container mx-auto">
-        <div className="tint"></div>
+        <div ref={contRef} className={`tint ${cont ? "tint_show" : ""}`}></div>
         <div className="home_contribute_content">
             <h1 className="heading_one">You can contribute to make<br /> the environment greener!</h1>
             <div>
@@ -169,7 +234,7 @@ const What = () => {
 
       <TitleLine text="Read Our News" />
 
-      <section className="home_card_news">
+      <section ref={newsRef} className={`home_card_news ${newsCards ? "home_card_news_show" : ""}`}>
         <NewsCard 
             image="https://res.cloudinary.com/dfltu5jw4/image/upload/v1709818409/finsweet/home/Thumbnail_hcjdoz.png"
             header="Don't destroy greenery and don't spoil scenery"

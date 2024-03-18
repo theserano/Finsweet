@@ -21,7 +21,7 @@ router.post("/reach-out", async (req: Request, res: Response) => {
         const messageResponse = await sendContactEmail(email);
         console.log(messageResponse);
 
-        return res.status(200).json({message: "Subscribed"});
+        return res.status(200).json({message: "contacted"});
     } catch (error) {
         console.log(error)
         return res.status(500).json({message: "error occurred"})

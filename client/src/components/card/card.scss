@@ -58,7 +58,7 @@
     height: 300px;
     border-radius: 15px;
     overflow: hidden;
-    transition: $transition;
+    transition: all 500ms ease-in-out;
     cursor: pointer;
 
     &_image{
@@ -80,8 +80,7 @@
     }
 }
 .news_card:hover{
-    background-color: rgba($black, 0.2);
-    padding: 1rem;
+    background-color: rgba($black, 0.1);
 }
 .team_card{
     width: 250px;
