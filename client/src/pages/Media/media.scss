@@ -46,7 +46,7 @@
                 &_image{
                     width: 100%;
                     img{
-                        width: 100%;
+                        width: 200px;
                         object-fit: cover;
                     }
                 }
@@ -110,7 +110,8 @@
                 }
             }
             &_right{
-                width: 300px;
+                align-self: center;
+                width: 230px;
                 gap: 3rem;
                 &_div{
                     grid-template-columns: 100%;
