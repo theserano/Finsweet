@@ -18,6 +18,9 @@ const Navlink = () => {
     const handleOpenMenu = () => {
         setOpenMenu(!openMenu);
     }
+    const handleClick = () => {
+        setOpenMenu(!openMenu);
+    }
 
     useEffect(() => {
         // Set initial state based on the initial screen width
@@ -49,6 +52,7 @@ const Navlink = () => {
                             className="nav_menu_box_link"
                             to={item.link}
                             key={item.id}
+                            onClick={handleClick}
                         >
                             <li>{item.text}</li>
                         </Link>

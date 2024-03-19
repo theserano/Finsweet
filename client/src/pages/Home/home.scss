@@ -91,7 +91,7 @@
                 overflow: hidden;
                 max-width: 400px;
                 height: 400px;
-                transform: translateX(200px);
+                transform: translateY(200px);
                 opacity: 0;
                 transition: transform ease-in-out 1s, opacity ease-in-out 2s;
 
@@ -130,7 +130,7 @@
     opacity: 1;
 }
 .home_know_top_right_video_show{
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
 }
 
@@ -224,7 +224,7 @@
         flex-direction: column;
         gap: 2rem;
         justify-content: center;
-        transform: translateX(-200px);
+        transform: translateY(-200px);
         opacity: 0;
         transition: transform 1s ease-in-out, opacity 2s ease-in-out;
 
@@ -259,7 +259,7 @@
     }
 }
 .home_spend_left_show{
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
 }
 
