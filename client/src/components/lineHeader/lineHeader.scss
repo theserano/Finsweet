@@ -1,25 +1,25 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-.line_header{
+.line_header {
     display: flex;
     gap: 1rem;
     align-items: center;
-    &_line{
+    &_line {
         border: 1px solid $black;
         width: 4rem;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .line_header{
-        &_line{
+    .line_header {
+        &_line {
             width: 3rem;
         }
     }
 }
 @media screen and (max-width: 400px) {
-    .line_header{
-        &_line{
+    .line_header {
+        &_line {
             width: 2rem;
         }
     }

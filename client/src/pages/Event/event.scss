@@ -1,22 +1,21 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-
-.events_header{
+.events_header {
     padding: 10rem 0rem;
     background-color: $green-tertiary;
 
-    &_container{
+    &_container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 3rem;
 
-        &_dates{
+        &_dates {
             display: flex;
             gap: 1rem;
 
-            p{
+            p {
                 display: flex;
                 gap: 1rem;
                 align-items: center;
@@ -25,18 +24,17 @@
     }
 }
 
-.events_details{
+.events_details {
     padding: 10rem 0rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-
-
 // media queries
 @media screen and (max-width: 700px) {
-    .events_header, .events_details{
+    .events_header,
+    .events_details {
         padding: 10rem 2rem;
     }
 }

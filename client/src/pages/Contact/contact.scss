@@ -1,53 +1,56 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-
-.contact_header{
+.contact_header {
     background-color: $off-white;
     padding: 5rem 0rem;
     overflow: hidden;
 
-    &_container{
+    &_container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         justify-content: center;
         align-items: start;
         gap: 10rem;
 
-        &_left{
+        &_left {
             display: flex;
             flex-direction: column;
             gap: 3rem;
             transform: translateX(-200px);
             opacity: 0;
-            transition: transform 1s ease-in-out, opacity 2s ease-in-out;
+            transition:
+                transform 1s ease-in-out,
+                opacity 2s ease-in-out;
 
-            &_bottom{
+            &_bottom {
                 padding-left: 5rem;
                 display: flex;
                 flex-direction: column;
                 gap: 2rem;
             }
         }
-        &_right{
+        &_right {
             display: flex;
             flex-direction: column;
             gap: 2.5rem;
             transform: translateY(300px);
             opacity: 0;
-            transition: transform 1s ease-in-out, opacity 2s ease-in-out;
+            transition:
+                transform 1s ease-in-out,
+                opacity 2s ease-in-out;
         }
     }
 }
-.contact_header_container_left_show{
+.contact_header_container_left_show {
     opacity: 1;
     transform: translateX(0);
 }
-.contact_header_container_right_show{
+.contact_header_container_right_show {
     opacity: 1;
     transform: translateY(0);
 }
 
-.contact_form{
+.contact_form {
     padding: 5rem 0rem;
     width: 700px;
     margin: auto;
@@ -55,62 +58,62 @@
     flex-direction: column;
     gap: 1rem;
 
-    &_top, &_middle{
+    &_top,
+    &_middle {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
 
-        &_name, &_email{
+        &_name,
+        &_email {
             display: flex;
             flex-direction: column;
-            gap: .5rem;
+            gap: 0.5rem;
 
-            input{
+            input {
                 border: 1px solid $off-white;
                 border-style: none none solid;
-
             }
-            input:focus{
+            input:focus {
                 outline: none;
             }
-            .contact_error{
-                color: #E6A4B4;
-                font-size: .8rem;
+            .contact_error {
+                color: #e6a4b4;
+                font-size: 0.8rem;
             }
         }
     }
-    &_bottom{
+    &_bottom {
         display: flex;
         flex-direction: column;
-        gap: .5rem;
+        gap: 0.5rem;
 
-        textarea{
+        textarea {
             border: 1px solid $off-white;
             border-radius: 10px;
             padding: 1rem;
         }
-        textarea:focus{
+        textarea:focus {
             outline: none;
         }
-        .contact_error{
-            color: #E6A4B4;
-            font-size: .8rem;
+        .contact_error {
+            color: #e6a4b4;
+            font-size: 0.8rem;
         }
-
     }
 }
-.contact_error{
-    color: #E6A4B4;
-    font-size: .8rem;
+.contact_error {
+    color: #e6a4b4;
+    font-size: 0.8rem;
 }
-.map_responsive{
+.map_responsive {
     overflow: hidden;
     padding-bottom: 5rem;
     position: relative;
     height: 50vh;
 }
 
-.map_responsive iframe{
+.map_responsive iframe {
     left: 0;
     top: 0;
     border: 0;
@@ -121,45 +124,46 @@
 
 // media queries
 @media screen and (max-width: 1000px) {
-    .contact_header{
-        &_container{
+    .contact_header {
+        &_container {
             gap: 1.5rem;
         }
     }
 }
 @media screen and (max-width: 800px) {
-    .contact_header{
+    .contact_header {
         padding: 5rem 2rem;
-        &_container{
+        &_container {
             grid-template-columns: 100%;
             gap: 3rem;
-            &_right{
+            &_right {
                 padding-left: 5rem;
             }
         }
     }
-    .contact_form{
+    .contact_form {
         width: 450px;
-        &_top, &_middle{
+        &_top,
+        &_middle {
             grid-template-columns: 100%;
         }
     }
 }
 @media screen and (max-width: 500px) {
-    .contact_header{
+    .contact_header {
         padding: 5rem 1rem;
-        &_container{
-            &_left{
-                &_bottom{
+        &_container {
+            &_left {
+                &_bottom {
                     padding-left: 3rem;
                 }
             }
-            &_right{
+            &_right {
                 padding-left: 3rem;
             }
         }
     }
-    .contact_form{
+    .contact_form {
         width: 100%;
         padding: 2rem;
     }

@@ -1,6 +1,6 @@
-@import "../../styles/generic.scss";
+@import '../../styles/generic.scss';
 
-.blog_header{
+.blog_header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,18 +8,16 @@
     gap: 1rem;
     padding: 5rem 0rem;
 }
-.blog_details{
+.blog_details {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-
-
-
-// media queries 
+// media queries
 @media screen and (max-width: 700px) {
-    .blog_header, .blog_details{
+    .blog_header,
+    .blog_details {
         padding: 5rem 1rem;
     }
 }

@@ -1,6 +1,6 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-.card{
+.card {
     max-width: 25rem;
     height: 24rem;
     border: 1px solid;
@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
 
-    &_dark{
+    &_dark {
         position: absolute;
         top: 0;
         left: 0;
@@ -20,7 +20,7 @@
         height: 100%;
         background-color: rgba($black, 0.5);
     }
-    &_details{
+    &_details {
         position: relative;
         z-index: 1;
         width: 100%;
@@ -30,24 +30,24 @@
         align-items: flex-start;
         gap: 2rem;
 
-        h1{
+        h1 {
             width: 70%;
             color: $white;
             padding: 0;
             margin: 0;
             line-height: 1.5;
         }
-        p{
+        p {
             color: $white;
         }
-        button:hover{
+        button:hover {
             border-color: $white;
             color: $white;
         }
     }
 }
 
-.news_card{
+.news_card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,7 +61,7 @@
     transition: all 500ms ease-in-out;
     cursor: pointer;
 
-    &_image{
+    &_image {
         width: 100%;
         height: 200px;
         background-position: center;
@@ -69,7 +69,7 @@
         background-size: cover;
         border-radius: 15px;
     }
-    &_details{
+    &_details {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -79,10 +79,10 @@
         padding: 0rem 1rem 2rem;
     }
 }
-.news_card:hover{
+.news_card:hover {
     background-color: rgba($black, 0.1);
 }
-.team_card{
+.team_card {
     width: 250px;
     padding: 1rem;
     display: flex;
@@ -94,28 +94,27 @@
     border-radius: 10px;
     cursor: default;
 
-    &_image{
-        width: 100%
-        img{
+    &_image {
+        width: 100% img {
             width: 100%;
         }
     }
-    &_details{
+    &_details {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: .7rem;
+        gap: 0.7rem;
     }
 }
 
-.team_card:hover{
+.team_card:hover {
     background-color: rgba($black, 0.2);
 }
 
 /* media queries */
 @media screen and (max-width: 500px) {
-    .card{
+    .card {
         max-width: 20rem;
         height: 19rem;
     }

@@ -1,23 +1,25 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-.donate_header{
+.donate_header {
     background-color: $green-tertiary;
     padding: 5rem 0rem;
 
-    &_container{
+    &_container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 3rem;
 
-        &_left{
+        &_left {
             display: flex;
             flex-direction: column;
             gap: 2rem;
             transform: translateX(-200px);
             opacity: 0;
-            transition: transform 1s ease-in-out, opacity 2s ease-in-out;
+            transition:
+                transform 1s ease-in-out,
+                opacity 2s ease-in-out;
 
-            &_bottom{
+            &_bottom {
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
@@ -25,7 +27,7 @@
             }
         }
 
-        &_right{
+        &_right {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -35,15 +37,15 @@
         }
     }
 }
-.donate_header_container_left_show{
+.donate_header_container_left_show {
     opacity: 1;
     transform: translateX(0);
 }
-.donate_header_container_right_show{
+.donate_header_container_right_show {
     opacity: 1;
 }
 
-.donate_contribute{
+.donate_contribute {
     padding: 7rem 0rem;
     margin-bottom: 2rem;
     border: 1px solid $off-white;
@@ -52,26 +54,31 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
 
-    &_left{
+    &_left {
         display: flex;
         flex-direction: column;
         gap: 2rem;
         transform: translateX(-200px);
         opacity: 0;
-        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
+        transition:
+            transform 1s ease-in-out,
+            opacity 2s ease-in-out;
     }
-    &_right{
+    &_right {
         opacity: 0;
         transform: translateX(200px);
-        transition: transform 1s ease-in-out, opacity 2s ease-in-out;
+        transition:
+            transform 1s ease-in-out,
+            opacity 2s ease-in-out;
     }
 }
-.donate_contribute_left_show, .donate_contribute_right_show{
+.donate_contribute_left_show,
+.donate_contribute_right_show {
     opacity: 1;
     transform: translateX(0);
 }
 
-.donation_use{
+.donation_use {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
@@ -79,45 +86,44 @@
     transition: opacity 2s ease-in-out;
 }
 
-.donation_use_show{
+.donation_use_show {
     opacity: 1;
 }
-
 
 // media queries
 
 @media screen and (max-width: 800px) {
-    .donate_header{
+    .donate_header {
         padding: 5rem 1rem;
-        &_container{
+        &_container {
             grid-template-columns: 100%;
         }
     }
-    .donate_contribute{
+    .donate_contribute {
         grid-template-columns: 100%;
         padding: 7rem 1rem;
     }
-    .donation_use{
+    .donation_use {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 700px) {
-    .donation_use{
+    .donation_use {
         padding: 0rem 1rem;
     }
 }
 @media screen and (max-width: 500px) {
-    .donate_header{
-        &_container{
-            &_left{
-                &_bottom{
+    .donate_header {
+        &_container {
+            &_left {
+                &_bottom {
                     padding-left: 3rem;
                 }
             }
         }
     }
-    .donation_use{
+    .donation_use {
         grid-template-columns: 100%;
     }
 }

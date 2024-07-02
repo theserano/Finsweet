@@ -1,20 +1,19 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-
-.project_article{
+.project_article {
     padding: 5rem 0rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
-    &_bottom{
+    &_bottom {
         padding-left: 5rem;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
 
-        &_image{
-            background-image: url("https://res.cloudinary.com/dfltu5jw4/image/upload/v1710430538/Image_1_gcbkrx.png");
+        &_image {
+            background-image: url('https://res.cloudinary.com/dfltu5jw4/image/upload/v1710430538/Image_1_gcbkrx.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -23,34 +22,32 @@
             border-radius: 1rem;
             margin-bottom: 1rem;
         }
-        ul{
+        ul {
             padding-left: 2rem;
-            li{
+            li {
                 list-style-type: disc;
             }
         }
     }
 }
 
-
-
 // media queries
 @media screen and (max-width: 800px) {
-    .project_article{
+    .project_article {
         padding: 5rem 1rem;
-        &_bottom{
-            &_image{
+        &_bottom {
+            &_image {
                 height: 15rem;
             }
         }
     }
 }
-@media screen and (max-width: 500px){
-    .project_article{
+@media screen and (max-width: 500px) {
+    .project_article {
         padding: 5rem 2rem;
-        &_bottom{
+        &_bottom {
             padding-left: 3rem;
-            &_image{
+            &_image {
                 height: 10rem;
             }
         }
